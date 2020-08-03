@@ -43,6 +43,7 @@
                             "data": "id_peternakan",
                             "orderable": false
                         },
+                        {"data":"cetak"},
                         {"data":"nosiup"},
                         {"data": "namapeternakan"},
                         {"data": "alamat"},

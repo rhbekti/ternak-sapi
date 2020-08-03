@@ -37,11 +37,12 @@ class Peternakan extends CI_Controller
     public function edit()
     {
         $data['judul'] = "Edit Data Peternakan";
+        $id = $this->input->post('id_peternakan');
         $pro = $this->input->post('propinsi');
         $kab = $this->input->post('kabupaten');
         $kec = $this->input->post('kecamatan');
         $data['id_user'] = $this->utilitas->user_login();
-        $data['rs'] = $this->M_peternakan->datatunggal()->row();
+        $data['ra'] = $this->M_peternakan->datasingel($id);
         $data['kabupaten'] = $this->M_wilayah->get_kabupaten($pro);
         $data['kecamatan'] = $this->M_wilayah->get_kecubah($pro,$kab);
         $data['propinsi'] = $this->M_wilayah->get_propinsi()->result();
@@ -81,6 +82,14 @@ class Peternakan extends CI_Controller
                 echo json_encode($arr_result);
             }
         }
+    }
+    public function cetak()
+    {
+        $id = $this->input->post('id_peternakan');
+        $data['rs'] = $this->M_peternakan->datacetak($id)->row();
+        // var_dump($data['row']);die;
+		$html = $this->load->view('admin/peternakan/cetak_peternakan',$data,true);
+		$this->utilitas->PDFprint($html,'Surat Ternak'.$data['rs']->id_peternakan,'A4','potrait');
     }
 
 

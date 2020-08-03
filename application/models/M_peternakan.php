@@ -29,6 +29,7 @@ class M_peternakan extends CI_Model
         $this->datatables->join('wil_kabupaten','wil_kabupaten.kodepropinsi = peternakan.kodepropinsi AND wil_kabupaten.kodekabupaten = peternakan.kodekabupaten','left');
         $this->datatables->join('wil_kecamatan','wil_kecamatan.kodepropinsi = peternakan.kodepropinsi AND wil_kecamatan.kodekabupaten = peternakan.kodekabupaten AND wil_kecamatan.kodekecamatan = peternakan.kodekecamatan','left');
         $this->datatables->add_column('edit','<form action="'.site_url('/peternakan/edit').'" method="post"> <button class="btn btn-warning" name="id_peternakan" value="$1"><i class="fas fa-pen"></i></button><input type="hidden" value="$2" name="propinsi"><input type="hidden" value="$3" name="kabupaten"><input type="hidden" value="$4" name="kecamatan"></form>','id_peternakan,kdpro,kdkab,kdkec');
+        $this->datatables->add_column('cetak','<form action="'.site_url('/peternakan/cetak').'" method="post" target="_blank"> <button class="btn btn-info" name="id_peternakan" value="$1"><i class="fas fa-print"></i></button></form>','id_peternakan,kdpro,kdkab,kdkec');
         $this->datatables->add_column('hapus','<button class="btn btn-danger" id="hapusdata" data-idpeternakan="$1"><i class="fas fa-trash"></i></button>','id_peternakan');
         return $this->datatables->generate();
     }
@@ -57,14 +58,29 @@ class M_peternakan extends CI_Model
         $this->db->where('id_peternakan',$id);
         $this->db->delete('peternakan');
     }
-    public function datatunggal()
+    public function datasingel($id)
     {
-        $id = $this->input->post('id_peternakan');
+        $this->db->where('id_peternakan',$id);
         $this->db->select('peternakan.*,kelompok.namakelompok,koperasi.namakoperasi');
         $this->db->from('peternakan');
-        $this->db->where('id_peternakan',$id);
         $this->db->join('kelompok','kelompok.kodekelompok = peternakan.kodekelompok');
         $this->db->join('koperasi','koperasi.kodekoperasi = peternakan.kodekoperasi');
-        return $this->db->get();
+         $hasil = $this->db->get();
+         return $hasil->row();
+    }
+    public function datacetak($id = null)
+    {
+        $this->db->select('peternakan.*,koperasi.namakoperasi,kelompok.namakelompok,wil_propinsi.namapropinsi,wil_kabupaten.namakabupaten,wil_kecamatan.namakecamatan');
+        $this->db->from('peternakan');
+        if($id != null){
+            $this->db->where('id_peternakan',$id);
+        }
+        $this->db->join('kelompok','kelompok.kodekelompok = peternakan.kodekelompok');
+        $this->db->join('koperasi','koperasi.kodekoperasi = peternakan.kodekoperasi');
+        $this->db->join('wil_propinsi','wil_propinsi.kodepropinsi = peternakan.kodepropinsi','left');
+        $this->db->join('wil_kabupaten','wil_kabupaten.kodepropinsi = peternakan.kodepropinsi AND wil_kabupaten.kodekabupaten = peternakan.kodekabupaten','left');
+        $this->db->join('wil_kecamatan','wil_kecamatan.kodepropinsi = peternakan.kodepropinsi AND wil_kecamatan.kodekabupaten = peternakan.kodekabupaten AND wil_kecamatan.kodekecamatan = peternakan.kodekecamatan','left');
+        $hasil = $this->db->get();
+        return $hasil;
     }
 }

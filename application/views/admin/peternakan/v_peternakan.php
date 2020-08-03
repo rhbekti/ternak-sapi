@@ -29,6 +29,7 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
+                                    <th>&nbsp;</th>
                                     <th>No Siup</th>
                                     <th>Nama</th>
                                     <th>Alamat</th>
