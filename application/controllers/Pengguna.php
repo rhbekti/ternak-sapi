@@ -101,4 +101,5 @@ class Pengguna extends CI_Controller
         $this->M_pengguna->delete();
         redirect('/Pengguna');
     }
+  
 }

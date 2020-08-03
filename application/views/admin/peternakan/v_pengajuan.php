@@ -50,23 +50,14 @@
                         <label for="kelompok">Kelompok</label>
                         <input type="text" name="kelompok" class="form-control" id="kelompok" placeholder="Masukkan Nama Kelompok">
                       </div>
+                      <input type="hidden" name="kodekelompok" class="form-control" id="kodekelompok" placeholder="Kode Kelompok" readonly>
                   </div>
-                  <div class="col-md-6">
-                      <div class="form-group">
-                        <label for="kelompok">Kode Kelompok</label>
-                        <input type="text" name="kodekelompok" class="form-control" id="kodekelompok" placeholder="Kode Kelompok" readonly>
-                      </div>
-                  </div>
+                  
                   <div class="col-md-6">
                       <div class="form-group">
                         <label for="koperasi">Koperasi</label>
                         <input type="text" name="koperasi" class="form-control" id="koperasi" placeholder="Masukkan Nama Koperasi">
-                      </div>
-                  </div>
-                  <div class="col-md-6">
-                      <div class="form-group">
-                        <label for="koperasi">Koperasi</label>
-                        <input type="text" name="kodekoperasi" class="form-control" id="kodekoperasi" placeholder="Kode Koperasi" readonly>
+                        <input type="hidden" name="kodekoperasi" class="form-control" id="kodekoperasi" placeholder="Kode Koperasi" readonly>
                       </div>
                   </div>
               </div>

@@ -25,6 +25,7 @@ class Pengajuan extends CI_Controller
     public function save()
     {
         $this->M_peternakan->save();
+        $this->session->set_flashdata('info','Di Tambahkan');
         redirect('/Peternakan');
     }
     public function get_auto()

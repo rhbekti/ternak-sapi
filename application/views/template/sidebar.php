@@ -67,7 +67,7 @@ $submenu = $this->session->userdata('submenu');
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="<?=site_url('/Peternakan');?>" class="nav-link <?=($submenu == 'peternakan')?('active'):('');?>">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Data Peternakan</p>
                 </a>
