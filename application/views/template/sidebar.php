@@ -86,6 +86,29 @@ $submenu = $this->session->userdata('submenu');
               </li>
             </ul>
           </li>
+          <li class="nav-item has-treeview <?=($menu == 'ref_produksi')?('menu-open'):(''); ?>">
+            <a href="javascript:void(0);" class="nav-link <?=($menu == 'ref_produksi')?('active'):(''); ?>">
+              <i class="nav-icon fas fa-flask"></i>
+              <p>
+                Produksi Susu
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?=site_url('/Susu');?>" class="nav-link <?=($submenu == 'susu')?('active'):('');?>">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Data Produksi</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Inactive Page</p>
+                </a>
+              </li>
+            </ul>
+          </li>
           <li class="nav-item">
             <a href="<?=site_url('/Pengguna'); ?>" class="nav-link <?=($menu == 'pengguna')?('active'):(''); ?>">
               <i class="nav-icon fas fa-user"></i>
