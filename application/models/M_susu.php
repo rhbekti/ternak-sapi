@@ -17,6 +17,7 @@ class M_susu extends CI_Model
             $this->db->where('id_susu',$id);
         }
         $this->db->join('peternakan','peternakan.id_peternakan = susu.peternakan','left');
+        $this->db->join('sapi','sapi.idsapi = susu.id_sapi','left');
         return $this->db->get('susu');
     }
 }

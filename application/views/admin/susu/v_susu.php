@@ -97,7 +97,7 @@
                                   <td><?=$generator->getBarcode($row->barcode, $generator::TYPE_CODE_128);?></td>
                                   <td><?=$row->tgl_produksi;?></td>
                                   <td><?=$row->namapeternakan;?></td>
-                                  <td><?=$row->id_sapi; ?></td>
+                                  <td><?=$row->namasapi; ?></td>
                                   <td><?=$row->kandang; ?></td>
                                   <td><?=$row->pagi;?></td>
                                   <td><?=$row->sore;?></td>

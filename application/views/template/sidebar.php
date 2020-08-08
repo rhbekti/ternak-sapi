@@ -28,19 +28,19 @@ $submenu = $this->session->userdata('submenu');
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <li class="nav-item has-treeview <?=($menu == 'ternak')?('menu-open'):(''); ?>">
-            <a href="#" class="nav-link <?=($menu == 'ternak')?('active'):(''); ?>">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+          <li class="nav-item has-treeview <?=($menu == 'data_ternak')?('menu-open'):(''); ?>">
+            <a href="#" class="nav-link <?=($menu == 'data_ternak')?('active'):(''); ?>">
+              <i class="nav-icon fas fa-horse"></i>
               <p>
-                Starter Pages
+                Ternak
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="<?=site_url('/Sapi');?>" class="nav-link <?=($submenu == 'sapi')?('active'):('');?>">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Active Page</p>
+                  <p>Sapi</p>
                 </a>
               </li>
               <li class="nav-item">
