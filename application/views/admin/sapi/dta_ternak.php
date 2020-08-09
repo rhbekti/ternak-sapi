@@ -43,6 +43,7 @@
                         {"data" : "tagsapi"},
                         {"data" : "namasapi"},
                         {"data" : "kelamin"},
+                        {"data" : "tipesapi"},
                         {"data" : "nama_bangsa"},
                         {"data" : "idfarm"},
                         {"data" : "status"},

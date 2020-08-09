@@ -30,6 +30,7 @@
                                     <th>Tag Sapi</th>
                                     <th>Nama</th>
                                     <th>Kelamin</th>
+                                    <th>Tipe</th>
                                     <th>Bangsa</th>
                                     <th>Peternakan</th>
                                     <th>Status</th>

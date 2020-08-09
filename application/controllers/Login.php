@@ -36,7 +36,7 @@ class Login extends CI_Controller {
 					];
 					$this->session->set_userdata($param);
 					$this->session->set_flashdata('pesan',$row->username);
-					redirect('/Pengguna');
+					redirect('/Sapi');
 				}else{
 					$this->session->set_flashdata('pesan','<div class="alert alert-danger" role="alert">Username / Password salah.</div>');
 					redirect('/Login');

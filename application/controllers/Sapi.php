@@ -14,7 +14,6 @@ class Sapi extends CI_Controller
     public function index()
     {
         $data['judul'] = "Data Ternak Sapi";
-        // $data['rs'] = $this->M_ternak->get()->result();
         $data['id_user'] = $this->utilitas->user_login();
         $this->load->view('template/header');
         $this->load->view('template/navbar',$data);
@@ -28,5 +27,51 @@ class Sapi extends CI_Controller
         header('Content-Type: application/json');
         echo $this->M_ternak->get_json();
     }
+    public function add()
+    {
+        $data['judul'] = "Tambah Data Ternak";
+        $data['id_user'] = $this->utilitas->user_login();
+        $data['bangsa'] = $this->M_ternak->get_bangsa()->result();
+        $this->load->view('template/header');
+        $this->load->view('template/navbar',$data);
+        $this->load->view('template/sidebar');
+        $this->load->view('admin/sapi/v_tambah_ternak');
+        $this->load->view('template/footer');
+        $this->load->view('admin/sapi/dta_ternak');
+    }
+    public function save()
+    {
+        $this->M_ternak->insert();
+        $this->session->set_flashdata('info','Di Tambah');
+        redirect('/Sapi');
+    }
+    public function edit()
+    {
+        $id = $this->input->post('idsapi');
+        $data['judul'] = "Edit Data Ternak Sapi";
+        $data['id_user'] = $this->utilitas->user_login();
+        $data['rs'] = $this->M_ternak->get($id)->row();
+        $data['bangsa'] = $this->M_ternak->get_bangsa()->result();
+        $this->load->view('template/header');
+        $this->load->view('template/navbar',$data);
+        $this->load->view('template/sidebar');
+        $this->load->view('admin/sapi/v_edit_ternak',$data);
+        $this->load->view('template/footer');
+        $this->load->view('admin/sapi/dta_ternak');
+    }
+    public function update()
+    {
+        $id = $this->input->post('idsapi');
+        $this->M_ternak->update($id);
+        $this->session->set_flashdata('info','Di Perbarui');
+        redirect('/Sapi'); 
+    }
+    public function hapus($id)
+    {
+        $id = $this->input->post('idsapi');
+        $this->M_ternak->delete($id);
+        $this->session->set_flashdata('info','Di Hapus');
+        redirect('/Sapi');
+    } 
     
 }
