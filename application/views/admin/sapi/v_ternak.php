@@ -18,6 +18,7 @@
       <div class="container-fluid">
         <div class="row">
             <div class="col-12">
+            <div class="flashdata" data-flashdata="<?=$this->session->flashdata('info'); ?>"></div>
                 <div class="card">
                   <div class="card-header">
                     <a href="<?=site_url('/Sapi/add');?>" class="btn btn-primary">Tambah</a>
@@ -63,8 +64,8 @@
         <h5 class="modal-title" id="judulmodal">Hapus Data</h5>
       </div>
       <div class="modal-body">
-        <form action="<?=site_url('/Sapi/hapus'); ?>" method="post">
-          <input type="hidden" name="id" id="id" required>
+        <form action="<?=site_url('/Sapi/hapus_data'); ?>" method="post">
+          <input type="hidden" name="idsapi" id="id" required>
           Apakah yakin dihapus?
         </div>
         <div class="modal-footer">

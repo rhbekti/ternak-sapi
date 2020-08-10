@@ -52,4 +52,20 @@ class Kandang extends CI_Controller
         $this->M_kandang->delete();
         redirect('/Kandang');
     }
+    public function get_kandang()
+    {
+        if(isset($_GET['term'])){
+            $result = $this->M_kandang->cari_data($_GET['term']);
+            if(count($result) > 0){
+                foreach($result as $row)
+                $array_hasil[] = ['label' => $row->namakandang,'idkd' => $row->idkandang];
+                echo json_encode($array_hasil);
+            }else{
+                $array_hasil[] = ['error' => 'Data Tidak Ditemukan'];
+                echo json_encode($array_hasil);
+            }
+
+        }
+       
+    }
 }

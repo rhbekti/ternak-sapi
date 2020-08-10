@@ -58,4 +58,9 @@ class M_kandang extends CI_Model
             $this->session->set_flashdata('info','Gagal di Hapus');
         }
     }
+    public function cari_data($id)
+    {
+        $this->db->like('namakandang', $id , 'both');
+        return $this->db->get('kandang')->result();
+    }
 }

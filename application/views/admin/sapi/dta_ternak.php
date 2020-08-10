@@ -87,6 +87,22 @@
                     $('[name="idpeternakan"]').val(ui.item.idpt);
                      }
                 });
+                $( "#kandang" ).autocomplete({
+                  source: "<?php echo site_url('kandang/get_kandang');?>",
+                  select: function (event, ui) {
+                    $('#kandang').val(ui.item.label);
+                    $('[name="idkandang"]').val(ui.item.idkd);
+                     }
+                });
+                //  sweet alert
+                const flashData = $('.flashdata').data('flashdata');
+                if(flashData){
+                    Swal.fire({
+                        title : 'Data Ternak',
+                        text : flashData,
+                        type: 'success'
+                    });   
+                }
     });
 </script>
 </body>

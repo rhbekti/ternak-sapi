@@ -29,7 +29,7 @@ class M_ternak extends CI_Model
     {
         $data = [
             'idsapi' => '',
-            'idfarm' => htmlspecialchars($this->input->post('peternakan')),
+            'idfarm' => htmlspecialchars($this->input->post('idpeternakan')),
             'tagsapi' => htmlspecialchars($this->input->post('tagsapi')),
             'idbangsa' => htmlspecialchars($this->input->post('bangsa')),
             'kelamin' => htmlspecialchars($this->input->post('kelamin')),
@@ -38,7 +38,7 @@ class M_ternak extends CI_Model
             'tgllahir' => htmlspecialchars(date('Y-m-d',strtotime($this->input->post('tgllahir')))).' ' .htmlspecialchars(date('H:i:s',strtotime($this->input->post('waktulahir')))),
             'bobotlahir' => htmlspecialchars($this->input->post('bobotlahir')),
             'status' => htmlspecialchars($this->input->post('status')),
-            'idkandang' => htmlspecialchars($this->input->post('kandang')),
+            'idkandang' => htmlspecialchars($this->input->post('idkandang')),
             'is_uzur' => htmlspecialchars($this->input->post('uzur')),
             'is_kso' => htmlspecialchars($this->input->post('kso')),
             'is_balai' => htmlspecialchars($this->input->post('balai')),
@@ -47,12 +47,22 @@ class M_ternak extends CI_Model
             'statuspc' => htmlspecialchars($this->input->post('statuspc')),
             'tglinput' => htmlspecialchars($this->input->post('tglinput'))
         ];
-        $this->db->insert('sapi',$data);
+        $sql = $this->db->insert('sapi',$data);
+        if($this->db->affected_rows($sql) > 0){
+            $this->session->set_flashdata('info','Berhasil di Simpan');
+        }else{
+            $this->session->set_flashdata('info','Gagal di Simpan');
+        }
     }
     public function delete($id)
     {
         $this->db->where('idsapi',$id);
-        $this->db->delete('sapi');
+        $sql =$this->db->delete('sapi');
+        if($this->db->affected_rows($sql) > 0){
+            $this->session->set_flashdata('info','Berhasil di Hapus');
+        }else{
+            $this->session->set_flashdata('info','Gagal di Hapus');
+        }
     } 
     public function update($id)
     {
@@ -69,6 +79,11 @@ class M_ternak extends CI_Model
             'tglinput' => $this->input->post('tglinput')
         ];
         $this->db->where('idsapi',$id);
-        $this->db->update('sapi',$data);
+        $sql = $this->db->update('sapi',$data);
+        if($this->db->affected_rows($sql) > 0){
+            $this->session->set_flashdata('info','Berhasil di Perbarui');
+        }else{
+            $this->session->set_flashdata('info','Gagal di Perbarui');
+        }
     }
 } 
