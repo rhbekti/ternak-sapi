@@ -73,6 +73,12 @@ $submenu = $this->session->userdata('submenu');
                 </a>
               </li>
               <li class="nav-item">
+                <a href="<?=site_url('/Kandang');?>" class="nav-link <?=($submenu == 'kandang')?('active'):('');?>">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Data Kandang</p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="<?=site_url('/Kelompok');?>" class="nav-link <?=($submenu == 'kelompok')?('active'):('');?>">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Data Kelompok</p>

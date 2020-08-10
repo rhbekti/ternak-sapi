@@ -9,6 +9,10 @@
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="<?=base_url();?>/assets/AdminLte/plugins/fontawesome-free/css/all.min.css">
+  <!-- Tempusdominus Bbootstrap 4 -->
+  <link rel="stylesheet" href="<?=base_url();?>/assets/AdminLte/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+   <!-- Daterange picker -->
+   <link rel="stylesheet" href="<?=base_url();?>/assets/AdminLte/plugins/daterangepicker/daterangepicker.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="<?=base_url();?>/assets/AdminLte/dist/css/adminlte.min.css">
    <!-- SweetAlert2 -->

@@ -41,9 +41,24 @@ class Sapi extends CI_Controller
     }
     public function save()
     {
-        $this->M_ternak->insert();
-        $this->session->set_flashdata('info','Di Tambah');
-        redirect('/Sapi');
+        $this->form_validation->set_rules('');
+
+        if ($this->form_validation->run() == FALSE){
+            $data['judul'] = "Tambah Data Ternak";
+            $data['id_user'] = $this->utilitas->user_login();
+            $data['bangsa'] = $this->M_ternak->get_bangsa()->result();
+            $this->load->view('template/header');
+            $this->load->view('template/navbar',$data);
+            $this->load->view('template/sidebar');
+            $this->load->view('admin/sapi/v_tambah_ternak');
+            $this->load->view('template/footer');
+            $this->load->view('admin/sapi/dta_ternak');
+        }
+        else{
+            $this->M_ternak->insert();
+            $this->session->set_flashdata('info','Di Tambah');
+            redirect('/Sapi');
+        }
     }
     public function edit()
     {

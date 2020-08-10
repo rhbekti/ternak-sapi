@@ -87,9 +87,24 @@ class Peternakan extends CI_Controller
     {
         $id = $this->input->post('id_peternakan');
         $data['rs'] = $this->M_peternakan->datacetak($id)->row();
-        // var_dump($data['row']);die;
 		$html = $this->load->view('admin/peternakan/cetak_peternakan',$data,true);
 		$this->utilitas->PDFprint($html,'Surat Ternak'.$data['rs']->id_peternakan,'A4','potrait');
+    }
+    public function get_peternakan()
+    {
+        if(isset($_GET['term'])){
+            $result = $this->M_peternakan->cari_data($_GET['term']);
+            if(count($result) > 0){
+                foreach($result as $row)
+                $array_hasil[] = ['label' => $row->namapeternakan,'idpt' => $row->id_peternakan];
+                echo json_encode($array_hasil);
+            }else{
+                $array_hasil[] = ['error' => 'Data Tidak Ditemukan'];
+                echo json_encode($array_hasil);
+            }
+
+        }
+       
     }
 
 

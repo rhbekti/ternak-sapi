@@ -1,6 +1,5 @@
 <?php
 date_default_timezone_set('Asia/Jakarta');
-echo date('Y-m-d H:i:s');
 ?>
 <div class="content-wrapper">
     <div class="content-header">
@@ -65,6 +64,24 @@ echo date('Y-m-d H:i:s');
                               <option value="mutasi">Mutasi</option>
                             </select>
                           </div>
+                          <div class="form-group">
+                            <label for="statuspc">Status PC</label>
+                            <select name="statuspc" id="statuspc" class="form-control">
+                              <option value="PC">PC</option>
+                              <option value="DC">DC</option>
+                              <option value="ANAK DC">ANAK DC</option>
+                            </select>
+                          </div>
+                          <div class="form-group">
+                            <label for="kandang">Kandang</label>
+                            <input type="text" name="kandang" id="kandang" class="form-control" autocomplete="off">
+                            <h6 id="infopeternakan"></h6>
+                          </div>
+                          <div class="form-group">
+                            <label for="peternakan">peternakan</label>
+                            <input type="text" name="peternakan" class="form-control" id="peternakan" placeholder="Masukkan Nama peternakan">
+                            <input type="hidden" name="idpeternakan" class="form-control" id="idpeternakan" placeholder="idpeternakan" readonly>
+                          </div>
                         </div>
                     </div>
                 </div>
@@ -81,13 +98,33 @@ echo date('Y-m-d H:i:s');
                                 <option value="Alam">Alam</option>
                             </select>
                           </div>
-                          <div class="form-group">
-                            <label for="tgllahir">Tanggal Lahir</label>
-                            <input type="datetime" name="tgllahir" id="tgllahir" class="form-control">
+                          <div class="row">
+                            <div class="col-12 col-md-6 col-sm-12">
+                              <div class="form-group">
+                                <label for="tgllahir">Tanggal Melahirkan</label>
+                                <div class="input-group date" id="tgllahirform" data-target-input="nearest">
+                                    <input type="text" name="tgllahir" class="form-control datetimepicker-input" data-target="#tgllahirform"/>
+                                    <div class="input-group-append" data-target="#tgllahirform" data-toggle="datetimepicker">
+                                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                    </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-sm-12">
+                              <div class="form-group">
+                                <label for="waktulahir">Waktu Melahirkan</label>
+                                  <div class="input-group date" id="waktulahir" data-target-input="nearest">
+                                      <input type="text" name="waktulahir" class="form-control datetimepicker-input" data-target="#waktulahir"/>
+                                      <div class="input-group-append" data-target="#waktulahir" data-toggle="datetimepicker">
+                                          <div class="input-group-text"><i class="fa fa-clock"></i></div>
+                                      </div>
+                                  </div>
+                              </div>
+                            </div>
                           </div>
                           <div class="form-group">
-                            <label for="bobot">Bobot Lahir (kg)</label>
-                            <input type="number" name="bobot" id="bobot" class="form-control">
+                            <label for="bobotlahir">Bobot Lahir (kg)</label>
+                            <input type="number" name="bobotlahir" id="bobot" class="form-control">
                           </div>
                           <div class="form-group">
                           <label for="uzur">Uzur</label>
@@ -104,29 +141,58 @@ echo date('Y-m-d H:i:s');
                               </label>
                           </div>
                           <div class="form-group">
-                          <label for="uzur">Balai</label>
+                          <label for="uzur">KSO</label>
                           <div class="form-check">
-                              <input class="form-check-input" type="radio" name="balai" id="ck_uzur" value="1">
+                              <input class="form-check-input" type="radio" name="kso" id="ck_kso" value="1">
                               <label class="form-check-label" for="exampleRadios1">
                                 Iya
                               </label>
                             </div>
                             <div class="form-check">
-                              <input class="form-check-input" type="radio" name="balai" id="ci_uzur" value="0">
+                              <input class="form-check-input" type="radio" name="kso" id="ci_kso" value="0">
                               <label class="form-check-label" for="exampleRadios2">
                                 Tidak
                               </label>
                           </div>
+                          <div class="form-group">
+                          <label for="uzur">Balai</label>
+                          <div class="form-check">
+                              <input class="form-check-input" type="radio" name="balai" id="ck_balai" value="1">
+                              <label class="form-check-label" for="exampleRadios1">
+                                Iya
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="radio" name="balai" id="ci_balai" value="0">
+                              <label class="form-check-label" for="exampleRadios2">
+                                Tidak
+                              </label>
+                          </div>
+                          <div class="form-group mb-4">
+                          <label for="vbc">VBC</label>
+                          <div class="form-check">
+                              <input class="form-check-input" type="radio" name="vbc" id="ck_vbc" value="1">
+                              <label class="form-check-label" for="exampleRadios1">
+                                Iya
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="radio" name="vbc" id="ci_vbc" value="0">
+                              <label class="form-check-label" for="exampleRadios2">
+                                Tidak
+                              </label>
+                          </div>
+                          <br><br>
                           <!-- hidden input -->
                           <input type="hidden" name="idsapi" required>
                           <input type="hidden" name="tglinput" value="<?=date('Y-m-d H:i:s');?>">
+                          <button type="submit" name="update" class="btn btn-success float-right mx-3">Tambah</button>
+                          <a href="<?=site_url('/Sapi');?>" class="btn btn-danger float-right" id="btn_kembali">Batal</a>
+                          </form>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <button type="submit" name="update" class="btn btn-success float-right mx-3">Tambah</button>
-                  <a href="<?=site_url('/Sapi');?>" class="btn btn-danger float-right" id="btn_kembali">Batal</a>
-                </form>
               </div>
         </div>
       </div>

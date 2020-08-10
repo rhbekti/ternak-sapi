@@ -1,6 +1,7 @@
 <!-- DataTables -->
 <script src="<?=base_url(); ?>assets/AdminLTE/plugins/datatables/jquery.dataTables.js"></script>
 <script src="<?=base_url(); ?>assets/AdminLTE/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+<script src="<?php echo base_url().'assets/jqueryUi/jquery-ui.js'?>" type="text/javascript"></script>
 <script>
     $(document).ready(function(){
         $.fn.dataTableExt.oApi.fnPagingInfo = function(oSettings)
@@ -64,6 +65,27 @@
                     var id = $(this).data('idsapi');
                     $('#Modalhapus').modal('show');
                     $('[name="idsapi"]').val(id);
+                });
+
+                $('#tgllahirform').datetimepicker({
+                    icons: {
+                    time: "fa fa-clock-o",
+                    date: "fa fa-calendar",
+                    up: "fa fa-arrow-up",
+                    down: "fa fa-arrow-down"
+                    },
+                    format : "DD-MM-YYYY",
+                    useCurrent : false
+                });
+                $('#waktulahir').datetimepicker({
+                    format: 'HH:mm:ss'
+                });
+                $( "#peternakan" ).autocomplete({
+                  source: "<?php echo site_url('peternakan/get_peternakan');?>",
+                  select: function (event, ui) {
+                    $('#peternakan').val(ui.item.label);
+                    $('[name="idpeternakan"]').val(ui.item.idpt);
+                     }
                 });
     });
 </script>

@@ -29,23 +29,23 @@ class M_ternak extends CI_Model
     {
         $data = [
             'idsapi' => '',
-            'idfarm' => htmlspecialchars($this->input->post('idfarm')),
+            'idfarm' => htmlspecialchars($this->input->post('peternakan')),
             'tagsapi' => htmlspecialchars($this->input->post('tagsapi')),
-            'idbangsa' => htmlspecialchars($this->input->post('idbangsa')),
+            'idbangsa' => htmlspecialchars($this->input->post('bangsa')),
             'kelamin' => htmlspecialchars($this->input->post('kelamin')),
             'tipesapi' => htmlspecialchars($this->input->post('tipeternak')),
             'namasapi' => htmlspecialchars($this->input->post('namasapi')),
-            'tgllahir' => htmlspecialchars($this->input->post('tgllahir')),
+            'tgllahir' => htmlspecialchars(date('Y-m-d',strtotime($this->input->post('tgllahir')))).' ' .htmlspecialchars(date('H:i:s',strtotime($this->input->post('waktulahir')))),
             'bobotlahir' => htmlspecialchars($this->input->post('bobotlahir')),
             'status' => htmlspecialchars($this->input->post('status')),
-            'idkandang' => htmlspecialchars($this->input->post('idkandang')),
+            'idkandang' => htmlspecialchars($this->input->post('kandang')),
             'is_uzur' => htmlspecialchars($this->input->post('uzur')),
             'is_kso' => htmlspecialchars($this->input->post('kso')),
             'is_balai' => htmlspecialchars($this->input->post('balai')),
             'is_vbc' => htmlspecialchars($this->input->post('vbc')),
             'statuspc' => htmlspecialchars($this->input->post('statuspc')),
             'statuspc' => htmlspecialchars($this->input->post('statuspc')),
-            'tglinput' => htmlspecialchars($this->input->post('tgliput'))
+            'tglinput' => htmlspecialchars($this->input->post('tglinput'))
         ];
         $this->db->insert('sapi',$data);
     }
