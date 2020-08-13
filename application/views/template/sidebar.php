@@ -119,7 +119,7 @@ $submenu = $this->session->userdata('submenu');
           </li>
           <li class="nav-item">
             <a href="<?=site_url('/Petugas'); ?>" class="nav-link <?=($menu == 'petugas')?('active'):(''); ?>">
-              <i class="nav-icon fas fa-user"></i>
+              <i class="nav-icon fas fa-users"></i>
               <p>
                 Petugas
               </p>
