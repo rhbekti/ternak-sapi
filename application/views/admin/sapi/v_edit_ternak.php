@@ -81,10 +81,29 @@ echo date('Y-m-d H:i:s');
                                 <option value="Alam" <?=($rs->tipesapi == "Alam")?"SELECTED":""?>>Alam</option>
                             </select>
                           </div>
-                          <div class="form-group">
-                            <label for="tgllahir">Tanggal Lahir</label>
-                            <input type="datetime" name="tgllahir" id="tgllahir" value="<?=$rs->tgllahir;?>" class="form-control">
+                          <div class="row"> 
+                              <div class="col-12 col-md-6">
+                                <div class="form-group">
+                                <label for="tgllahir">Tanggal Lahir</label>
+                                <div class="input-group input-group mb-3">
+                                  <div class="input-group-prepend">
+                                    <button id="gantitanggal" class="btn btn-primary" type="button" data-toggle="modal" data-target="#view_tanggal">Ubah</button>
+                                  </div>
+                                  <input type="text" name="tgllahirternak" id="tgllahirternak" value="<?=date('d-m-Y',strtotime(substr($rs->tgllahir,0,10)));?>" class="form-control">
+                                </div>
+                              </div>
+                              </div>
+                              <div class="col-12 col-md-6">
+                                <div class="form-group">
+                                <label for="tgllahir">Waktu Lahir</label>
+                                <div class="input-group input-group mb-3">
+                                  <input type="text" name="waktulahirsapi" id="waktulahirsapi" value="<?=substr($rs->tgllahir,10);?>" class="form-control">
+                                </div>
+                              </div>
+                            </div>
+                              
                           </div>
+                          
                           <div class="form-group">
                             <label for="bobot">Bobot Lahir (kg)</label>
                             <input type="number" name="bobot" id="bobot" class="form-control" value="<?=$rs->bobotlahir;?>">
@@ -124,9 +143,32 @@ echo date('Y-m-d H:i:s');
                       </div>
                     </div>
                   </div>
-                  <button type="submit" name="update" class="btn btn-success float-right mx-3">Perbarui</button>
-                  <a href="<?=site_url('/Sapi');?>" class="btn btn-danger float-right" id="btn_kembali">Batal</a>
-                </form>
+              </div>
+              <div class="col-12 col-md-12">
+                <div class="card">
+                  <div class="card-header">
+                    DATA PETERNAKAN      
+                  </div>
+                  <div class="card-body">
+                    <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#view_ternak">Ubah</button>
+                    <div class="form-group">
+                    <label for="kandang">Kandang</label>
+                      <input type="text" name="namakandang" id="namakandang" class="form-control" value="<?=$rs->namakandang;?>" readonly>
+                      <input type="hidden" name="idkandang" value="<?=$rs->idkandang;?>">
+                    </div>
+                    <div class="form-group">
+                    <label for="peternakan">Peternak</label>
+                      <input type="text" name="namapeternakan" id="namapeternakan" class="form-control" value="<?=$rs->namapeternakan;?>" readonly>
+                      <input type="hidden" name="idpeternakan" value="<?=$rs->idfarm;?>">
+                    </div>
+                    <p class="small">
+                      <b><i>Data Akan Terisi Otomatis</i></b>
+                    </p>
+                    <button type="submit" name="update" class="btn btn-success float-right mx-3">Perbarui</button>
+                    <a href="<?=site_url('/Sapi');?>" class="btn btn-danger float-right" id="btn_kembali">Batal</a>
+                    </form> 
+                  </div>
+                </div>
               </div>
         </div>
       </div>
@@ -139,6 +181,83 @@ echo date('Y-m-d H:i:s');
       <p>Sidebar content</p>
     </div>
   </aside>
+  <!-- Modal Peterakan-->
+<div class="modal fade" id="view_ternak" tabindex="-1" role="dialog" aria-labelledby="view_peternakanLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="view_peternakanLabel">Data Peternakan</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="card">
+            <div class="card-body table-responsive">
+                <table class="table table-hover" id="tblkandang">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>&nbsp;</th>
+                            <th>Nama Kandang</th>
+                            <th>Alamat Kandang</th>
+                            <th>Nama Peternakan</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="view_tanggal" tabindex="-1" role="dialog" aria-labelledby="view_peternakanLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="view_peternakanLabel">Data Kelahiran</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="card p-5" style="height: 350px;">
+        <div class="row">
+            <div class="col-12 col-md-6 col-sm-12">
+              <div class="form-group">
+                <label for="tgllahir">Tanggal Melahirkan</label>
+                <div class="input-group date" id="tgllahirform" data-target-input="nearest">
+                  <input type="text" name="tgllahir" id="tgllahir" class="form-control datetimepicker-input" data-target="#tgllahirform" />
+                  <div class="input-group-append" data-target="#tgllahirform" data-toggle="datetimepicker">
+                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-sm-12">
+              <div class="form-group">
+                <label for="waktulahir">Waktu Melahirkan</label>
+                <div class="input-group date" id="waktulahir" data-target-input="nearest">
+                  <input type="text" name="waktulahir" id="waktulahirternak" class="form-control datetimepicker-input" data-target="#waktulahir" />
+                  <div class="input-group-append" data-target="#waktulahir" data-toggle="datetimepicker">
+                    <div class="input-group-text"><i class="fa fa-clock"></i></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="btntanggal" class="btn btn-success">Simpan</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 

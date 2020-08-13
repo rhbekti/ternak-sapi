@@ -21,6 +21,7 @@ class M_peternakan extends CI_Model
         ];
         $this->db->insert('peternakan',$data);
     }
+    
     public function get_json()
     {
         $this->datatables->select('id_peternakan,namapeternakan,alamat,namapeternak,notelp,nosiup,peternakan.kodepropinsi as kdpro,peternakan.kodekabupaten as kdkab,peternakan.kodekecamatan as kdkec,tglberdiri,wil_propinsi.namapropinsi as nmpropinsi,wil_kabupaten.namakabupaten as nmkab,wil_kecamatan.namakecamatan as nmkec');

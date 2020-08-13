@@ -9,6 +9,7 @@ class M_kandang extends CI_Model
         $this->datatables->add_column('edit','<button type="button" id="editkandang" name="edit" class="btn btn-warning" data-idkandang="$1" data-namakandang="$2" data-alamat="$3" data-kapasitas="$4" data-peternakan="$5" data-namapeternakan="$6">
         <i class="fas fa-pen"></i>
       </button>','idkandang,namakandang,lokasikandang,kapasitas,idfarm,namapeternakan');
+        $this->datatables->add_column('pilih','<button id="pilihkandang" data-idkandang="$1" data-nmkandang="$2" data-idpeternakan="$3" data-nmpeternakan="$4" class="btn btn-primary"><i class="fas fa-plus-circle"></i></button>','idkandang,namakandang,idfarm,namapeternakan');
         $this->datatables->add_column('hapus','<button type="button" id="hapusdata" name="hapus" class="btn btn-danger" data-idkandang="$1">
         <i class="fas fa-trash"></i>
       </button>','idkandang');

@@ -46,7 +46,7 @@
                         {"data" : "kelamin"},
                         {"data" : "tipesapi"},
                         {"data" : "nama_bangsa"},
-                        {"data" : "idfarm"},
+                        {"data" : "namapeternakan"},
                         {"data" : "status"},
                         {"data" : "edit"},
                         {"data" : "hapus"}
@@ -59,6 +59,57 @@
                         var index = page * length + (iDisplayIndex + 1);
                         $('td:eq(0)', row).html(index);
                     }
+                });
+                var kd = $("#tblkandang").dataTable({
+                    dom: '<"top"if>rt<"bottom"p>',
+                    initComplete: function() {
+                        var api = this.api();
+                        $('#tblkandang_filter input')
+                            .off('.DT')
+                            // melakukan proses ketika ada input otomatis
+                            .on('input.DT', function() {
+                                api.search(this.value).draw();
+                            });
+                    },
+                    oLanguage: {
+                        sProcessing: "Sedang Mengambil Data"
+                    },
+                    processing: true,
+                    serverSide: true, 
+                    searching: true,
+                    orderable : false,
+                    ajax: { "url": "<?php echo base_url().'index.php/kandang/get_data'?>", 
+                            "type": "POST"},
+                    columns: [
+                        {
+                            "data": "idkandang",
+                            "orderable": false
+                        },
+                        {"data": "pilih"},
+                        {"data": "namakandang"},
+                        {"data": "lokasikandang"},
+                        {"data": "namapeternakan"}
+                    ],
+                    order: [[0, 'asc']],
+                    rowCallback: function(row, data, iDisplayIndex) {
+                        var info = this.fnPagingInfo();
+                        var page = info.iPage;
+                        var length = info.iLength;
+                        var index = page * length + (iDisplayIndex + 1);
+                        $('td:eq(0)', row).html(index);
+                    }
+                });
+                 // tombol pilih
+                 $('#tblkandang').on('click','#pilihkandang',function(){
+                   var idkandang = $(this).data('idkandang');
+                   var nmkandang = $(this).data('nmkandang');
+                   var idpeternakan = $(this).data('idpeternakan');
+                   var nmpeternakan = $(this).data('nmpeternakan');
+                   $('#view_ternak').modal('hide');
+                   $('[name="idkandang"]').val(idkandang);
+                   $('[name="namakandang"]').val(nmkandang);
+                   $('[name="idpeternakan"]').val(idpeternakan);
+                   $('[name="namapeternakan"]').val(nmpeternakan);
                 });
                   // tombol hapus
                   $('#tblsapi').on('click','#btnHapus',function(){
@@ -93,6 +144,15 @@
                     $('#kandang').val(ui.item.label);
                     $('[name="idkandang"]').val(ui.item.idkd);
                      }
+                });
+                $('#btntanggal').click(function(){
+                    var tanggal = $('#tgllahir').val();
+                    var waktu =  $('#waktulahirternak').val();
+                    $('#view_tanggal').modal('hide');
+                    $('#tgllahirternak').val(tanggal);
+                    $('#waktulahirsapi').val(tanggal);
+                    $('[name="tgllahirternak"]').val(tanggal);
+                    $('[name="waktulahirsapi"]').val(waktu);
                 });
                 //  sweet alert
                 const flashData = $('.flashdata').data('flashdata');
