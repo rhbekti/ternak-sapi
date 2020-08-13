@@ -77,8 +77,13 @@
                 <input type="number" name="nosiup" id="nosiup" class="form-control">
               </div>
               <div class="form-group">
-                <label for="tglberdiri">Tanggal Pengajuan</label>
-                <input type="date" name="tglberdiri" id="tglberdiri" class="form-control">
+                    <label for="tgllahir">Tanggal Pengajuan</label>
+                    <div class="input-group date" id="tgllahirform" data-target-input="nearest">
+                      <div class="input-group-append" data-target="#tgllahirform" data-toggle="datetimepicker">
+                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                      </div>
+                      <input type="text" name="tglberdiri" class="form-control datetimepicker-input" data-target="#tgllahirform" />
+                    </div>
               </div>
               <div class="form-group">
                 <label for="propinsi">Provinsi</label>

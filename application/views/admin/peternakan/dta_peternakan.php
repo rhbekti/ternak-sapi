@@ -143,6 +143,16 @@
                         }
                     });
                 });
+                $('#tgllahirform').datetimepicker({
+                    icons: {
+                    time: "fa fa-clock-o",
+                    date: "fa fa-calendar",
+                    up: "fa fa-arrow-up",
+                    down: "fa fa-arrow-down"
+                    },
+                    format : "DD-MM-YYYY",
+                    useCurrent : false
+                });
 
 
                 //sweet alert

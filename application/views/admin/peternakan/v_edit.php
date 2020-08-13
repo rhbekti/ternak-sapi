@@ -78,8 +78,13 @@
                 <input type="number" name="nosiup" id="nosiup" class="form-control" value="<?=$ra->nosiup;?>">
               </div>
               <div class="form-group">
-                <label for="tglberdiri">Tanggal peternakan</label>
-                <input type="date" name="tglberdiri" id="tglberdiri" class="form-control" value="<?=$ra->tglberdiri;?>">
+                <label for="tgllahir">Tanggal Pengajuan</label>
+                <div class="input-group date" id="tgllahirform" data-target-input="nearest">
+                  <div class="input-group-append" data-target="#tgllahirform" data-toggle="datetimepicker">
+                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                  </div>
+                  <input type="text" value="<?=date('d-m-Y',strtotime($ra->tglberdiri));?>" name="tglberdiri" class="form-control datetimepicker-input" data-target="#tgllahirform" />
+                </div>
               </div>
               <div class="form-group">
                 <label for="propinsi">Provinsi</label>
