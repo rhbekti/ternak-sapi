@@ -21,6 +21,7 @@ class M_ternak extends CI_Model
         $this->datatables->add_column('edit','<form action="'.site_url('/Sapi/edit').'" method="post"><button name="idsapi" class="btn btn-warning" value="$1"><i class="fas fa-pen"></i></button></form>','idsapi');
         $this->datatables->add_column('hapus','<button id="btnHapus" class="btn btn-danger" data-idsapi="$1"><i class="fas fa-trash"></i></button>','idsapi');
         $this->datatables->add_column('tambah','<button id="pilihternak" class="btn btn-success" data-idsapi="$1" data-nmsapi="$4" data-idpeternakan="$2" data-namapeternakan="$3" data-idkandang="$6" data-nmkandang="$5"><i class="fas fa-plus-circle"></i></button>','idsapi,idfarm,namapeternakan,namasapi,namakandang,idkandang');
+        $this->datatables->add_column('tambahjantan','<button id="pilihternakjantan" class="btn btn-success" data-idsapi="$1" data-nmsapi="$4" data-idpeternakan="$2" data-namapeternakan="$3" data-idkandang="$6" data-nmkandang="$5"><i class="fas fa-plus-circle"></i></button>','idsapi,idfarm,namapeternakan,namasapi,namakandang,idkandang');
         $this->datatables->join('bangsa','bangsa.id_bangsa = sapi.idbangsa');
         $this->datatables->join('kandang','kandang.idkandang = sapi.idkandang','left');
         $this->datatables->join('peternakan','peternakan.id_peternakan = sapi.idfarm','left');

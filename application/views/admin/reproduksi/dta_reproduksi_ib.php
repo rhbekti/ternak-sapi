@@ -42,12 +42,11 @@
                         },
                         {"data": "tanggal"},
                         {"data": "namasapi"},
-                        {"data": "kodesemen"},
+                        {"data": "namasemen"},
                         {"data": "ibke"},
                         {"data": "intensitas"},
                         {"data": "keterangan"},
                         {"data": "namapetugas"},
-                        {"data": "edit"},
                         {"data": "hapus"}
                         // {"data": "editpass"}
                     ],

@@ -113,21 +113,27 @@ $submenu = $this->session->userdata('submenu');
             <a href="javascript:void(0);" class="nav-link <?=($menu == 'ref_reproduksi')?('active'):(''); ?>">
               <i class="nav-icon fas fa-chart-line"></i>
               <p>
-                REPRODUKSI
+                Reproduksi
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
+            <li class="nav-item">
+                <a href="<?=site_url('/Reproduksi');?>" class="nav-link <?=($submenu == 'tbhreproduksi')?('active'):('');?>">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Tambah Data</p>
+                </a>
+              </li>
               <li class="nav-item">
                 <a href="<?=site_url('/Reproduksi_IB');?>" class="nav-link <?=($submenu == 'reproduksi_ib')?('active'):('');?>">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>REPRODUKSI IB</p>
+                  <p>Data IB</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>REPRODUKSI ET</p>
+                  <p>Data ET</p>
                 </a>
               </li>
               <li class="nav-item">

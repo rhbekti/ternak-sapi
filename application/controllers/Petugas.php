@@ -83,4 +83,15 @@ class Petugas extends CI_Controller
         $this->M_petugas->update();
         redirect('/Petugas');
     }
+    public function get_auto()
+    {
+        if (isset($_GET['term'])) {
+            $result = $this->M_petugas->search_data($_GET['term']);
+            if (count($result) > 0) {
+            foreach ($result as $row)
+                $arr_result[] = [ 'label' => $row->nama,'kode' => $row->idpetugas ];
+                echo json_encode($arr_result);
+            }
+        }
+    }
 }

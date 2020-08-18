@@ -3,6 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_petugas extends CI_Model
 {
+    public function search_data($data){
+        $this->db->like('nama', $data , 'both');
+        $this->db->order_by('idpetugas', 'ASC');
+        $this->db->limit(10);
+        return $this->db->get('petugas')->result();
+    }
     public function get($id = null)
     {
         if($id != null){

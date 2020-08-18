@@ -26,11 +26,8 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Tanggal</th>
-                                    <th>Nama</th>
-                                    <th>Nama Semen</th>
-                                    <th>IB</th>
-                                    <th>Intensitas</th>
-                                    <th>Keterangan</th>
+                                    <th>Sapi Betina</th>
+                                    <th>Sapi Jantan</th>
                                     <th>Petugas</th>
                                     <th>&nbsp;</th>
                                 </tr>
