@@ -12,7 +12,7 @@ class M_petugas extends CI_Model
     public function get($id = null)
     {
         if($id != null){
-            $this->db->where('idpetugas',$id);
+            $this->db->where('nama',$id);
         }
         return $this->db->get('petugas');
     }
@@ -39,6 +39,15 @@ class M_petugas extends CI_Model
         }else{
             $this->session->set_flashdata('info','Data Gagal Ditambah');
         }
+    }
+    public function save_petugas($post)
+    {
+        $data = [
+            'idpetugas' => '',
+            'nama' => $post,
+            'jabatan' => 'PETUGAS IB'
+        ];
+        $sql = $this->db->insert('petugas',$data);
     }
     public function update()
     {

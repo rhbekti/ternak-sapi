@@ -20,7 +20,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-body">
-              <div class="flashdata" data-flashdata="<?=$this->session->flashdata('info'); ?>"></div>
+              <div class="flashdata" data-flashdata="<?=$this->session->flashdata('info'); ?>" data-pesan="<?=$this->session->flashdata('pesan'); ?>"></div>
                 <form action="<?=site_url('/reproduksi/save');?>" method="post">
                 <div class="row">
                   <div class="col-md-4">
@@ -53,6 +53,16 @@
                     <div class="form-group">
                       <label for="namasemen">Nama Semen</label>
                       <input type="text" name="namasemen" id="namasemen" class="form-control" readonly>
+                    </div>
+                  </div>
+                  <div class="col-md-4" id="ibsapi">
+                    <div class="form-group">
+                      <label for="intensitas">Intensitas Birahi</label>
+                      <input type="number" name="intensitas" id="intensitas" class="form-control">
+                    </div>
+                    <div class="form-group">
+                      <label for="ibke">IB ke</label>
+                      <input type="number" name="ibke" id="ibke" class="form-control">
                     </div>
                   </div>
                 </div>

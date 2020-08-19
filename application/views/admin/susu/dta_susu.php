@@ -37,11 +37,10 @@
                             "type": "POST"},
                     columns: [
                         {
-                            "data": "id_susu",
+                            "data": "idpengukuran",
                             "orderable": false
                         },
-                        {"data":"tgl_produksi"},
-                        {"data":"namapeternakan"},
+                        {"data":"tanggal"},
                         {"data": "namasapi"},
                         {"data":"namakandang"},
                         {"data" : "pagi"},
@@ -99,15 +98,15 @@
                 });
                   // tombol hapus
                   $('#tblsusu').on('click','#btnhapus',function(){
-                    var id = $(this).data('idsusu');
+                    var id = $(this).data('idpengukuran');
                     $('#Modalhapus').modal('show');
-                    $('[name="idsusu"]').val(id);
+                    $('[name="idpengukuran"]').val(id);
                 });
                   // tombol edit
                   $('#tblsusu').on('click','#btnedit',function(){
-                    var id = $(this).data('idsusu');
+                    var id = $(this).data('idpengukuran');
                     $('#Modalhapus').modal('show');
-                    $('[name="idsusu"]').val(id);
+                    $('[name="idpengukuran"]').val(id);
                 });
                 // tombol pilih
                 $('#tblsapi').on('click','#pilihternak',function(){
@@ -131,7 +130,8 @@
                     Swal.fire({
                         title : 'Data Produksi',
                         text : flashData,
-                        type: 'success'
+                        type: 'success',
+                        timer: 3000
                     });   
                 }
                

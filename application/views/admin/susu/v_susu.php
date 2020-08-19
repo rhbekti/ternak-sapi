@@ -33,7 +33,6 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Tanggal Produksi</th>
-                                    <th>Peternakan</th>
                                     <th>Nama Sapi</th>
                                     <th>Kandang</th>
                                     <th>Pagi (L)</th>
@@ -62,7 +61,7 @@
       </div>
       <div class="modal-body">
         <form action="<?=site_url('/susu/hapus'); ?>" method="post">
-          <input type="hidden" name="idsusu" id="id" required>
+          <input type="hidden" name="idpengukuran" id="id" required>
           Apakah yakin dihapus?
         </div>
         <div class="modal-footer">

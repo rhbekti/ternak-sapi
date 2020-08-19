@@ -183,9 +183,18 @@
                           <span type="button" data-toggle="modal" data-target="#view_semen" class="input-group-text bg-primary" id="cari-semen"><i class="fas fa-search"></i></span>
                         </div>
                       </div>
+                      </div>
                       <div class="form-group">
                       <label for="namasemen">Nama Semen</label>
                       <input type="text" name="namasemen" id="namasemen" class="form-control" readonly>
+                    </div>`);
+                    $('#ibsapi').html(`<div class="form-group">
+                      <label for="intensitas">Intensitas Birahi</label>
+                      <input type="number" name="intensitas" id="intensitas" class="form-control">
+                    </div>
+                    <div class="form-group">
+                      <label for="ibke">IB ke</label>
+                      <input type="number" name="ibke" id="ibke" class="form-control">
                     </div>`);
                     }else{
                         $('#kodejantan').html(`<div class="form-group">
@@ -198,15 +207,24 @@
                             </div>
                         </div>
                         `);
+                        $('#ibsapi').html('');
                     }
                 });
                 const flashData = $('.flashdata').data('flashdata');
+                const errorData = $('.flashdata').data('pesan');
                 if(flashData){
                     Swal.fire({
                         title : 'Data Ternak',
                         text : flashData,
                         type: 'success'
                     });   
+                }
+                if(errorData){
+                    Swal.fire({
+                        title : 'Data Ternak',
+                        text : errorData,
+                        type: 'error'
+                    });  
                 }
     });
 </script>

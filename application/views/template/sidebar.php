@@ -103,7 +103,7 @@ $submenu = $this->session->userdata('submenu');
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-eye-dropper nav-icon"></i>
                   <p>KUALITAS SUSU</p>
                 </a>
               </li>
@@ -131,7 +131,7 @@ $submenu = $this->session->userdata('submenu');
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="<?=site_url('/Reproduksi_ET');?>" class="nav-link <?=($submenu == 'data_et')?('active'):('');?>">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Data ET</p>
                 </a>

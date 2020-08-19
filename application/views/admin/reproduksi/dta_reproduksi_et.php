@@ -33,20 +33,18 @@
                     serverSide: true, 
                     searching: true,
                     orderable : false,
-                    ajax: { "url": "<?php echo base_url().'index.php/Reproduksi_IB/get_data'?>", 
+                    ajax: { "url": "<?php echo base_url().'index.php/Reproduksi_ET/get_data'?>", 
                             "type": "POST"},
                     columns: [
                         {
-                            "data": "idib",
+                            "data": "idtransfer",
                             "orderable": false
                         },
                         {"data": "tanggal"},
-                        {"data": "namasapi"},
-                        {"data": "namasemen"},
-                        {"data": "ibke"},
-                        {"data": "intensitas"},
-                        {"data": "keterangan"},
+                        {"data": "betina"},
+                        {"data": "idsapidonor"},
                         {"data": "namapetugas"},
+                        {"data": "keterangan"},
                         {"data": "hapus"}
                         // {"data": "editpass"}
                     ],
@@ -59,10 +57,10 @@
                         $('td:eq(0)', row).html(index);
                     }
                 });
-                $('#tblrepib').on('click','#btnHapus',function(){
-                    var idib = $(this).data('idib');
+                $("#tblrepib").on('click','#btnHapus',function(){
+                    var idet = $(this).data('idtransfer');
                     $('#hapusData').modal('show');
-                    $('[name="idib"]').val(idib);
+                    $('[name="idet"]').val(idet);
                 });
                 const flashData = $('.flashdata').data('flashdata');
                 if(flashData){

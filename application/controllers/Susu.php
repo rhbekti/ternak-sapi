@@ -37,7 +37,7 @@ class Susu extends CI_Controller
     }
     public function edit()
     {
-        $id = $this->input->post('id_susu');
+        $id = $this->input->post('idpengukuran');
         $data['judul'] = "Edit Data Produksi Susu";
         $data['id_user'] = $this->utilitas->user_login();
         $data['rs'] = $this->M_susu->get($id)->row();
@@ -60,13 +60,13 @@ class Susu extends CI_Controller
     }
     public function hapus()
     {
-        $post = $this->input->post('idsusu');
+        $post = $this->input->post('idpengukuran');
         $this->M_susu->delete($post);
         redirect('/Susu');
     }
     public function update()
     {
-        $id = $this->input->post('idsusu');
+        $id = $this->input->post('idpengukuran');
         $this->M_susu->update($id);
         redirect('/Susu');
     }

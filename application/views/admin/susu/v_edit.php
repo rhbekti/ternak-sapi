@@ -27,7 +27,7 @@
                         <button class="btn btn-primary float-right" type="button" data-toggle="modal" data-target="#view_ternak">Pilih Ternak</button>
                         <br>
                         <form action="<?=site_url('/susu/update');?>" method="post">
-                        <input type="hidden" name="idsusu" value="<?=$rs->id_susu;?>">
+                        <input type="hidden" name="idpengukuran" value="<?=$rs->idpengukuran;?>">
                         <div class="form-group">
                             <label for="sapi">Nama Sapi</label>
                             <input type="text" name="nmsapi" id="nmsapi" class="form-control" value="<?=$rs->namasapi;?>" readonly>
@@ -38,14 +38,7 @@
                             <input type="text" name="nmkandang" id="nmkandang" class="form-control" value="<?=$rs->namakandang;?>" readonly>
                             <input type="hidden" name="idkandang" id="idkandang" value="<?=$rs->idkandang;?>">
                         </div>  
-                        <div class="form-group">
-                            <label for="peternakan">Nama Peternakan</label>
-                            <input type="text" name="namapeternakan" id="nmpeternakan" class="form-control" value="<?=$rs->namapeternakan;?>" readonly>
-                            <input type="hidden" name="idpeternakan" id="idpeternakan" value="<?=$rs->peternakan;?>">
-                        </div>  
-                        <p class="small">
-                            <b><i>Data Akan Terisi otomatis sesuai peternakan</i></b>
-                        </p>
+                        
                     </div>
                 </div>
             </div>
@@ -55,11 +48,11 @@
                 <div class="card-body">
                         <div class="form-group">
                             <label for="pagi">Produksi Pagi</label>
-                            <input type="number" name="pagi" id="pagi" class="form-control" placeholder="Liter" value="<?=$rs->pagi;?>">
+                            <input type="text" name="pagi" id="pagi" class="form-control" placeholder="Liter" value="<?=$rs->pagi;?>">
                         </div>
                         <div class="form-group">
-                            <label for="pagi">Produksi Sore</label>
-                            <input type="number" name="sore" id="sore" class="form-control" placeholder="Liter"  value="<?=$rs->sore;?>">
+                            <label for="sore">Produksi Sore</label>
+                            <input type="text" name="sore" id="sore" class="form-control" placeholder="Liter"  value="<?=$rs->sore;?>">
                         </div>
                         <div class="form-group">
                             <label for="xlatasi">Xlatasi</label>
