@@ -97,7 +97,7 @@ $submenu = $this->session->userdata('submenu');
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="<?=site_url('/Susu');?>" class="nav-link <?=($submenu == 'susu')?('active'):('');?>">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-store-alt nav-icon"></i>
                   <p>Data Produksi</p>
                 </a>
               </li>
@@ -118,12 +118,6 @@ $submenu = $this->session->userdata('submenu');
               </p>
             </a>
             <ul class="nav nav-treeview">
-            <li class="nav-item">
-                <a href="<?=site_url('/Reproduksi');?>" class="nav-link <?=($submenu == 'tbhreproduksi')?('active'):('');?>">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Tambah Data</p>
-                </a>
-              </li>
               <li class="nav-item">
                 <a href="<?=site_url('/Reproduksi_IB');?>" class="nav-link <?=($submenu == 'reproduksi_ib')?('active'):('');?>">
                   <i class="far fa-circle nav-icon"></i>
@@ -134,6 +128,12 @@ $submenu = $this->session->userdata('submenu');
                 <a href="<?=site_url('/Reproduksi_ET');?>" class="nav-link <?=($submenu == 'data_et')?('active'):('');?>">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Data ET</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?=site_url('/Pkb');?>" class="nav-link <?=($submenu == 'data_pkb')?('active'):('');?>">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Data PKB</p>
                 </a>
               </li>
               <li class="nav-item">

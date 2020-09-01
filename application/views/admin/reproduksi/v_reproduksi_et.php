@@ -18,8 +18,14 @@
       <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-            <div class="flashdata" data-flashdata="<?=$this->session->flashdata('info'); ?>"></div>
+            <div class="flashdata" data-flashdata="<?=$this->session->flashdata('info'); ?>" data-pesan="<?=$this->session->flashdata('pesan'); ?>"></div>
                 <div class="card">
+                    <div class="card-header">
+                      <form action="<?=site_url('/Reproduksi/tambah');?>" method="post">
+                        <input type="hidden" name="page" value="DataET">
+                        <button type="submit" class="btn btn-primary float-right">Tambah Data</button>
+                      </form>
+                    </div>
                     <div class="card-body table-responsive">
                         <table class="table table-hover" id="tblrepib">
                             <thead>

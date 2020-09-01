@@ -65,12 +65,22 @@
                     $('[name="idib"]').val(idib);
                 });
                 const flashData = $('.flashdata').data('flashdata');
+                const errorData = $('.flashdata').data('pesan');
                 if(flashData){
                     Swal.fire({
                         title : 'Data Ternak',
                         text : flashData,
-                        type: 'success'
+                        type: 'success',
+                        timer : 3000
                     });   
+                }
+                if(errorData){
+                    Swal.fire({
+                        title : 'Data Ternak',
+                        text : errorData,
+                        type: 'error',
+                        timer : 3000
+                    });  
                 }
     });
 </script>

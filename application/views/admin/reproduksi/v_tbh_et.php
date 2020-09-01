@@ -40,35 +40,22 @@
                       <input type="hidden" name="idpetugas">
                     </div>
                   </div>
-                  <div class="col-md-4" id="kodejantan">
+                  <div class="col-md-4">
                     <div class="form-group">
-                      <label for="kodesemen">Kode Semen</label>
-                      <div class="input-group">
-                        <input type="text" class="form-control" id="kodesemen" name="kodesemen" autocomplete="off">
-                        <div class="input-group-append">
-                          <span type="button" data-toggle="modal" data-target="#view_semen" class="input-group-text bg-primary" id="cari-semen"><i class="fas fa-search"></i></span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label for="namasemen">Nama Semen</label>
-                      <input type="text" name="namasemen" id="namasemen" class="form-control" readonly>
-                    </div>
-                  </div>
-                  <div class="col-md-4" id="ibsapi">
-                    <div class="form-group">
-                      <label for="intensitas">Intensitas Birahi</label>
-                      <input type="number" name="intensitas" id="intensitas" class="form-control">
-                    </div>
-                    <div class="form-group">
-                      <label for="ibke">IB ke</label>
-                      <input type="number" name="ibke" id="ibke" class="form-control">
+                        <label for="kodesemen">Nama Sapi Jantan</label>
+                            <div class="input-group">
+                                <input type="hidden" name="idsapijantan">
+                                <input type="text" class="form-control" id="namasapijantan" name="namasapijantan" autocomplete="off">
+                                <div class="input-group-append">
+                                <span type="button" data-toggle="modal" data-target="#view_ternak_jantan" class="input-group-text bg-primary" id="cari-semen"><i class="fas fa-search"></i></span>
+                            </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+        </div>
         </div>
         <div class="row">
           <div class="col-12">
@@ -87,18 +74,18 @@
                         </div>
                       </div>
                       <div class="form-group">
-                        <input type="hidden" name="jenisreproduksi" id="jenisreproduksi" class="form-control" value="IB">
+                        <input type="hidden" name="jenisreproduksi" id="jenisreproduksi" class="form-control" value="ET">
                       </div>
                     </div>
                     <div class="col-md-6">
-                      <label for="keterangan">Keterangan</label>
-                      <textarea name="keterangan" id="keterangan" cols="3" rows="5" class="form-control">
-                      </textarea>
-                      <button type="submit" class="btn btn-success float-right my-3">Simpan</button>
-                      <a href="<?=site_url('/Reproduksi_IB');?>" class="btn btn-danger float-right my-3 mx-3">Batal</a>
-                      </form>
+                        <label for="keterangan">Keterangan</label>
+                        <textarea name="keterangan" id="keterangan" cols="3" rows="5" class="form-control">
+                        </textarea>
+                        <button type="submit" class="btn btn-success float-right my-3">Simpan</button>
+                        <a href="<?=site_url('/Reproduksi_ET');?>" class="btn btn-danger float-right my-3 mx-3">Batal</a>
+                        </form>
                     </div>
-                  </div>
+                </div>
                 </div>
               </div>
             </div>
@@ -180,37 +167,4 @@
   </div>
 </div>
   
-  <!-- Modal Semen-->
-<div class="modal fade" id="view_semen" tabindex="-1" role="dialog" aria-labelledby="view_semenLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="view_semenLabel">Data Semen</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="card">
-            <div class="card-body table-responsive">
-                <table class="table" id="tblsemen">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Kode Semen</th>
-                            <th>Nama Semen</th>
-                            <th>&nbsp;</th>
-                        </tr>
-                    </thead>
-                </table>
-            </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-      </div>
-    </div>
-  </div>
-</div>
-  
-
+ 

@@ -63,12 +63,20 @@
                     $('[name="idet"]').val(idet);
                 });
                 const flashData = $('.flashdata').data('flashdata');
+                const errorData = $('.flashdata').data('pesan');
                 if(flashData){
                     Swal.fire({
                         title : 'Data Ternak',
                         text : flashData,
                         type: 'success'
                     });   
+                }
+                if(errorData){
+                    Swal.fire({
+                        title : 'Data Ternak',
+                        text : errorData,
+                        type: 'error'
+                    });  
                 }
     });
 </script>

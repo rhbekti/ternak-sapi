@@ -21,26 +21,26 @@
             <div class="flashdata" data-flashdata="<?=$this->session->flashdata('info'); ?>" data-pesan="<?=$this->session->flashdata('pesan'); ?>"></div>
                 <div class="card">
                     <div class="card-header">
-                    <form action="<?=site_url('/reproduksi/tambah');?>" method="post">  
-                        <input type="hidden" name="page" value="DataIB">
-                        <button type="submit" class="btn btn-primary float-right">Tambah Data</button>
-                      </form>
+                      <a href="<?=site_url('/Pkb/tambah');?>" class="btn btn-success float-right">Tambah Data</a>
                     </div>
                     <div class="card-body table-responsive">
-                        <table class="table table-hover" id="tblrepib">
+                        <table class="table table-hover" id="tblpkb">
                             <thead>
                                 <tr>
                                     <th>No</th>
                                     <th>Tanggal</th>
-                                    <th>Nama</th>
-                                    <th>Nama Semen</th>
-                                    <th>IB</th>
-                                    <th>Intensitas</th>
+                                    <th>Sapi</th>
+                                    <th>Hasil</th>
+                                    <th>Status</th>
                                     <th>Keterangan</th>
                                     <th>Petugas</th>
                                     <th>&nbsp;</th>
+                                    <th>&nbsp;</th>
                                 </tr>
                             </thead>
+                            <tbody id="tbltampil"> 
+                           
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -68,9 +68,8 @@
         </button>
       </div>
       <div class="modal-body">
-        <form action="<?=site_url('/Reproduksi/hapus');?>" method="post">
-        <input type="hidden" name="idib" required>
-        <input type="hidden" name="jenis" value="IB">
+        <form action="<?=site_url('/Pkb/hapus')?>" method="post">
+        <input type="hidden" name="idpkb">
        Apakah Yakin dihapus?
       </div>
       <div class="modal-footer">
