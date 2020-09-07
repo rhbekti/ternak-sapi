@@ -47,8 +47,6 @@ class Sapi extends CI_Controller
     }
     public function save()
     {
-        // $this->form_validation->set_rules('');
-
         $this->M_ternak->insert();
         redirect('/Sapi');
     }
@@ -71,6 +69,10 @@ class Sapi extends CI_Controller
         $id = $this->input->post('idsapi');
         $this->M_ternak->update($id);
         redirect('/Sapi'); 
+    }
+    public function get_betina()
+    {
+        echo json_encode($this->M_ternak->get_sapi_betina());  
     }
    
    

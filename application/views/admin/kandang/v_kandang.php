@@ -20,6 +20,7 @@
         <div class="row">
             <div class="col-12">
               <div class="flashdata" data-flashdata="<?=$this->session->flashdata('info'); ?>"></div>
+              <div class="pesanerror" data-pesanerror="<?=$this->session->flashdata('error'); ?>"></div>
                 <div class="card">
                   <div class="card-header">
                     <!-- Button trigger modal -->
@@ -32,7 +33,7 @@
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="tambahdataLabel">Modal title</h5>
+                            <h5 class="modal-title" id="tambahdataLabel">Tambah Data</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                             </button>
@@ -41,15 +42,18 @@
                             <form action="<?=site_url('/Kandang/save');?>" method="post">
                                 <div class="form-group">
                                     <label for="namakandang">Nama Kandang</label>
-                                    <input type="text" name="namakandang" id="namakandang" class="form-control">
+                                    <input type="text" name="namakandang" id="namakandang" class="form-control" value="<?=set_value('namakandang');?>">
+                                    <?= form_error("namakandang",'<small class="text-danger">','</small>'); ?>
                                 </div>
                                 <div class="form-group">
                                     <label for="alamat">Alamat Kandang</label>
-                                    <input type="text" name="alamat" id="alamat" class="form-control">
+                                    <input type="text" name="alamat" id="alamat" class="form-control" value="<?=set_value('alamat');?>">
+                                    <?= form_error("alamat",'<small class="text-danger">','</small>'); ?>
                                 </div>
                                 <div class="form-group">
                                     <label for="kapasitas">Kapasitas</label>
-                                    <input type="text" name="kapasitas" id="kapasitas" class="form-control">
+                                    <input type="text" name="kapasitas" id="kapasitas" class="form-control" value="<?=set_value('kapasitas');?>">
+                                    <?= form_error("kapasitas",'<small class="text-danger">','</small>'); ?>
                                 </div>
                                 <div class="form-group">
                                     <label for="peternakan">Peternakan</label>
@@ -57,9 +61,10 @@
                                         <div class="input-group-prepend">
                                             <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#view_peternakan">Pilih</button>
                                         </div>
-                                        <input type="text" class="form-control" name="namapeternakan" readonly>
+                                        <input type="text" class="form-control" name="namapeternakan" value="<?=set_value('namapeternakan');?>" readonly>
                                         <input type="hidden" name="peternakan">
-                                    </div>
+                                      </div>
+                                      <?= form_error("namapeternakan",'<small class="text-danger">','</small>'); ?>
                                 </div>
                                 <p class="small">
                                 <b><i>Catatan : Data Harus Diisi Lengkap</i></b>

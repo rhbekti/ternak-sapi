@@ -137,6 +137,12 @@ $submenu = $this->session->userdata('submenu');
                 </a>
               </li>
               <li class="nav-item">
+                <a href="<?=site_url('/Kelahiran');?>" class="nav-link <?=($submenu == 'data_kelahiran')?('active'):('');?>">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Data Kelahiran</p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="<?=site_url('/Semen');?>" class="nav-link <?=($submenu == 'data_semen')?('active'):('')?>">
                   <i class="fas fa-vial nav-icon"></i>
                   <p>SEMEN</p>

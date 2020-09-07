@@ -126,7 +126,10 @@
                     $('[name="idkandang"]').val(id);
                 });
                
-                
+                const pesan = $('.pesanerror').data('pesanerror');
+                if(pesan){
+                    $('#tambahdata').modal('show'); 
+                }
                 //  sweet alert
                  const flashData = $('.flashdata').data('flashdata');
                 if(flashData){

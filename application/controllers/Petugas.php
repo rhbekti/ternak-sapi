@@ -94,4 +94,18 @@ class Petugas extends CI_Controller
             }
         }
     }
+    public function get_petugas()
+    {
+        $id = $this->input->post('nmpetugas');
+        $data = $this->M_petugas->search_data($id);
+        echo json_encode($data);
+        
+    }
+    public function get_petugasById()
+    {
+        $id = $this->input->post('idpetugas');
+        $data = $this->M_petugas->get($id)->row();
+        echo json_encode($data);
+        
+    }
 }

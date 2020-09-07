@@ -40,6 +40,7 @@ class M_reproduksi extends CI_Model
         $this->datatables->join('sapi','sapi.idsapi = reproduksi_pkb.idsapi','left');
         $this->datatables->add_column('edit','<form action="'.site_url('/Pkb/edit').'" method="post"><button name="idpkb" value="$1" class="btn btn-warning"><i class="fas fa-edit"></i></button></form>','idpkb');
         $this->datatables->add_column('hapus','<button class="btn-hapus btn btn-danger" data-idpkb="$1"><i class="fas fa-trash"></i></button>','idpkb');
+        $this->datatables->add_column('tambah','<button class="btn-tambah btn btn-primary" data-idpkb="$1" data-namasapi="$2"><i class="fas fa-plus"></i></button>','idpkb,namasapi');
         return $this->datatables->generate();
     }
     public function insert($idpetugas)
