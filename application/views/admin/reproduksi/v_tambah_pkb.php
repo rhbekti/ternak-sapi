@@ -26,12 +26,12 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <input type="hidden" name="idib">
-                                            <label for="tgl">Tanggal Pengajuan</label>
+                                            <label for="tgl">Tanggal Pemeriksaan</label>
                                             <div class="input-group date" id="tglform" data-target-input="nearest">
                                                 <div class="input-group-append" data-target="#tglform" data-toggle="datetimepicker">
                                                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                                 </div>
-                                                <input type="text" name="tanggal" class="form-control datetimepicker-input" data-target="#tglform" />
+                                                <input type="text" name="tanggal" min="2020-9-14" class="form-control datetimepicker-input" data-target="#tglform" />
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -63,10 +63,9 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="keterangan">Keterangan</label>
-                                            <textarea name="keterangan" id="keterangan" cols="3" rows="5" class="form-control">
-                        </textarea>
+                                            <textarea name="keterangan" id="keterangan" cols="3" rows="5" class="form-control"></textarea>
                                             <button type="submit" class="btn btn-success float-right my-3">Simpan</button>
-                                            <a href="<?= site_url('/Reproduksi_ET'); ?>" class="btn btn-danger float-right my-3 mx-3">Batal</a>
+                                            <a href="<?= site_url('/Pkb'); ?>" class="btn btn-danger float-right my-3 mx-3">Batal</a>
                             </form>
                         </div>
                     </div>
@@ -93,9 +92,6 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="view_peternakanLabel">Data Peternakan</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
             </div>
             <div class="modal-body">
                 <div class="card">

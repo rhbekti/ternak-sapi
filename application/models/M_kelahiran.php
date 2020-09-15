@@ -30,13 +30,33 @@ class M_kelahiran extends CI_Model
     {
         if($id != null)
         {
-            $this->db->select('idkelahiran,concat(substr(tanggal,9,2),"-",substr(tanggal,6,2),"-",substr(tanggal,1,4)) as tanggal,keterangan,reproduksi_kelahiran.idsapi,xlaktasi,reproduksi_kelahiran.idfarm,sapi.namasapi,statuslahir,reproduksi_kelahiran.idpetugas,petugas.nama as namapetugas');
+            $this->db->select('idkelahiran,concat(substr(tanggal,9,2),"-",substr(tanggal,6,2),"-",substr(tanggal,1,4)) as tanggal,keterangan,reproduksi_kelahiran.idsapi,xlaktasi,reproduksi_kelahiran.idfarm,sapi.namasapi,statuslahir,reproduksi_kelahiran.idpetugas,petugas.nama as namapetugas,idib');
             $this->db->join('sapi','sapi.idsapi = reproduksi_kelahiran.idsapi');
             $this->db->join('petugas','petugas.idpetugas = reproduksi_kelahiran.idpetugas','left');
             return $this->db->get_where('reproduksi_kelahiran',['idkelahiran' => $id]);
         }else
         {
             return $this->db->get('reproduksi_kelahiran');
+        }
+    }
+    public function update_data($post)
+    {
+        $data = [
+            'tanggal' => htmlspecialchars(date('Y-m-d',strtotime($post['tanggal']))),
+            'idsapi' => htmlspecialchars($post['idsapi']),
+            'statuslahir' => htmlspecialchars($post['statuslahir']),
+            'xlaktasi' => htmlspecialchars($post['xlaktasi']),
+            'tglinput' => htmlspecialchars($post['tglinput']),
+            'keterangan' => htmlspecialchars($post['keterangan']),
+            'idpetugas' => htmlspecialchars($post['idpetugas']),
+            'idib' => htmlspecialchars($post['idib'])
+        ];
+        $this->db->where('idkelahiran',$post['idkelahiran']);
+        $this->db->update('reproduksi_kelahiran',$data);
+        if($this->db->affected_rows() > 0){
+            $this->session->set_flashdata('info','Data Berhasil di perbarui');
+        }else{
+            $this->session->set_flashdata('info','Data gagal di perbarui');
         }
     }
 }

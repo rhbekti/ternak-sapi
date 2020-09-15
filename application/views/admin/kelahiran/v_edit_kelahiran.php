@@ -25,6 +25,7 @@
                             <div class="container p-3">
                                 <form action="<?= site_url('/Kelahiran/update'); ?>" method="post">
                                     <div class="form-group">
+                                    <input type="hidden" name="idkelahiran" value="<?=$rs->idkelahiran;?>">
                                         <label for="tgl">Tanggal</label>
                                         <div class="input-group date" id="tglform" data-target-input="nearest">
                                             <div class="input-group-append" data-target="#tglform" data-toggle="datetimepicker">
@@ -38,7 +39,7 @@
                                             <div class="input-group-prepend">
                                                 <button class="btn btn-success" type="button" id="editpilihan">Pilih</button>
                                             </div>
-                                            <input type="hidden" name="idsapi">
+                                            <input type="hidden" name="idsapi" value="<?=$rs->idsapi;?>">
                                             <input type="text" class="form-control" name="namasapi" placeholder="Pilih Sapi" value="<?=$rs->namasapi;?>" readonly>
                                         </div>
                                     </div>
@@ -66,7 +67,7 @@
 
                                         </select>
                                         <input type="hidden" name="tglinput" value="<?= date('Y-m-d'); ?>">
-                                        <input type="hidden" name="idib" id="idib">
+                                        <input type="hidden" name="idib" id="idib" value="<?=$rs->idib;?>">
                                     </div>
                             </div>
                             <div class="modal-footer">

@@ -29,7 +29,7 @@ $submenu = $this->session->userdata('submenu');
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-item has-treeview <?=($menu == 'data_ternak')?('menu-open'):(''); ?>">
-            <a href="#" class="nav-link <?=($menu == 'data_ternak')?('active'):(''); ?>">
+            <a href="<?=base_url();?>" class="nav-link <?=($menu == 'data_ternak')?('active'):(''); ?>">
               <i class="nav-icon fas fa-horse"></i>
               <p>
                 Ternak

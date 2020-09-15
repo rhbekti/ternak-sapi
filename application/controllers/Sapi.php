@@ -74,7 +74,15 @@ class Sapi extends CI_Controller
     {
         echo json_encode($this->M_ternak->get_sapi_betina());  
     }
-   
+    public function get_jantan()
+    {
+        echo json_encode($this->M_ternak->get_sapi_jantan());  
+    }
+    public function valid_tag()
+    {
+        $post = $this->input->post(null,true);
+        echo json_encode($this->M_ternak->validasi_tag($post['tag'])->result());
+    }
    
     
 }

@@ -23,6 +23,14 @@ class M_ternak extends CI_Model
         $this->db->join('peternakan','peternakan.id_peternakan = sapi.idfarm','left');
         return $this->db->get_where('sapi',['kelamin' => 'Betina'])->result();
     }
+    public function get_sapi_jantan()
+    {
+        // SELECT * FROM sapi join reproduksi_ib ON sapi.idsapi = reproduksi_ib.idsapi WHERE kelamin = 'betina'
+        // $data = $this->db->query("SELECT * FROM sapi join reproduksi_ib ON sapi.idsapi = reproduksi_ib.idsapi WHERE kelamin = 'betina'");
+        $this->db->select('sapi.idsapi as kdsapi,namasapi,tagsapi,kelamin,peternakan.namapeternakan');
+        $this->db->join('peternakan','peternakan.id_peternakan = sapi.idfarm','left');
+        return $this->db->get_where('sapi',['kelamin' => 'Jantan'])->result();
+    }
     public function get_json()
     {
         $this->datatables->select('idsapi,tagsapi,namasapi,kelamin,tipesapi,status,sapi.idfarm,sapi.idkandang,bangsa.nama_bangsa,peternakan.namapeternakan,kandang.namakandang');
@@ -110,6 +118,11 @@ class M_ternak extends CI_Model
     public function get_pilih($id)
     {
         $this->db->where('idfarm',$id);
+        return $this->db->get('sapi');
+    }
+    public function validasi_tag($post)
+    {
+        $this->db->like('tagsapi',$post,'both');
         return $this->db->get('sapi');
     }
 } 

@@ -13,7 +13,7 @@ class M_semen extends CI_Model
     {
         $this->datatables->select('kodesemen,namasemen');
         $this->datatables->from('semen');
-        $this->datatables->add_column('pilih_semen','<button class="btn btn-success" id="btnsemen" data-kodesemen="$1" data-namasemen="$2"><i class="fas fa-plus-circle"></i></button>','kodesemen,namasemen');
+        $this->datatables->add_column('pilih_semen','<button class="btn-semen btn btn-success" data-kodesemen="$1" data-namasemen="$2"><i class="fas fa-plus-circle"></i></button>','kodesemen,namasemen');
         $this->datatables->add_column('edit','<button class="btn btn-warning" id="btnEdit" data-kodesemen="$1" data-namasemen="$2"><i class="fas fa-pen"></i></button>','kodesemen,namasemen');
         $this->datatables->add_column('hapus','<button class="btn btn-danger" id="btnHapus" data-kodesemen="$1"><i class="fas fa-trash"></i></button>','kodesemen');
         return $this->datatables->generate();
