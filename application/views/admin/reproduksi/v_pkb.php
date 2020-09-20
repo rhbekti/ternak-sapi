@@ -20,7 +20,8 @@
         <div class="col-12">
           <div class="flashdata" data-flashdata="<?= $this->session->flashdata('info'); ?>" data-pesan="<?= $this->session->flashdata('pesan'); ?>"></div>
           <div class="card">
-            <div class="card-body table-responsive">
+            <div class="card-header">
+              <button type="button" class="btn btn-sm btn-primary float-right" data-toggle="modal" data-target="#aturpkb"><i class="fas fa-clock"></i> Atur</button>
               <ul class="nav nav-tabs mb-3">
                 <li class="nav-item">
                   <a class="nav-link active" data-toggle="tab" href="#home">Belum Diperiksa</a>
@@ -29,8 +30,10 @@
                   <a class="nav-link" data-toggle="tab" href="#menu1">Sudah Diperiksa</a>
                 </li>
               </ul>
-              <div class="tab-content">
-                <div class="tab-pane container active" id="home">
+            </div>
+            <div class="tab-content">
+              <div class="tab-pane container active" id="home">
+                <div class="card-body table-responsive">
                   <table class="table table-hover" id="tblpkb">
                     <thead>
                       <tr>
@@ -46,20 +49,19 @@
                     </tbody>
                   </table>
                 </div>
-                <div class="tab-pane container fade" id="menu1">
-                  <table class="table table-hover" id="tblpkbperiksa">
+              </div>
+              <div class="tab-pane container" id="menu1">
+                <div class="card-body table-responsive">
+                  <table class="table table-hover w-100" id="tblperiksapkb">
                     <thead>
                       <tr>
                         <th>No</th>
+                        <th>Tanggal</th>
                         <th>Tag Sapi</th>
-                        <th>Nama Sapi</th>
-                        <th>IBKe</th>
-                        <th>Status</th>
-                        <th>&nbsp;</th>
+                        <th>Hasil</th>
+                        <th>Petugas</th>
                       </tr>
                     </thead>
-                    <tbody id="tbl-pkb">
-                    </tbody>
                   </table>
                 </div>
               </div>
@@ -80,7 +82,7 @@
 
 <!-- Modal hapus -->
 <div class="modal fade" id="PeriksaData" tabindex="-1" role="dialog" aria-labelledby="hapusDataLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="hapusDataLabel">Pemeriksaan</h5>
@@ -98,7 +100,7 @@
             <div class="input-group-append" data-target="#tglform" data-toggle="datetimepicker">
               <div class="input-group-text"><i class="fa fa-calendar"></i></div>
             </div>
-            <input type="text" name="tanggal" class="form-control datetimepicker-input" data-target="#tglform" />
+            <input type="text" name="tanggal" class="form-control datetimepicker-input" data-target="#tglform" required />
           </div>
           <?= form_error("tanggal", '<small class="text-danger">', '</small>'); ?>
         </div>
@@ -108,18 +110,55 @@
           <input type="text" name="namasapi" id="sapi" class="form-control" readonly>
         </div>
         <div class="form-group">
+          <label for="hasil">Hasil</label>
+          <select name="hasil" id="hasil" class="form-control">
+            <option value="P">Positif</option>
+            <option value="N">Negatif</option>
+            <option value="Dubius">Dubius</option>
+          </select>
+        </div>
+        <div class="form-group">
           <label for="petugas">Petugas</label>
           <input type="hidden" name="idpetugas" id="idpetugas">
-          <input type="text" name="petugas" id="petugas" class="form-control" autocomplete="off">
+          <input type="text" name="petugas" id="petugas" class="form-control" autocomplete="off" required>
           <?= form_error("petugas", '<small class="text-danger">', '</small>'); ?>
           <select class="form-control" name="listpetugas" id="list-petugas" multiple>
 
           </select>
         </div>
+        <div class="form-group">
+          <input type="hidden" name="tglinput" value="<?= date('Y-m-d'); ?>">
+          <label for="keterangan">Keterangan</label>
+          <textarea name="keterangan" id="keterangan" class="form-control" cols="10" rows="5"></textarea>
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
         <button type="submit" class="btn btn-danger">Simpan</button>
+        <?= form_close(); ?>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="aturpkb" tabindex="-1" role="dialog" aria-labelledby="aturpkbLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="aturpkbLabel">Atur Pemeriksaan</h5>
+      </div>
+      <div class="modal-body">
+        <?= form_open('/Pkb/aturpkb') ?>
+        <div class="form-group">
+          <label for="tglhari">Hari</label>
+          <input type="number" name="tglhari" placeholder="jumlah hari" id="tglhari" class="form-control">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+        <button type="submit" class="btn btn-primary">Simpan</button>
         <?= form_close(); ?>
       </div>
     </div>

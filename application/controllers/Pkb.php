@@ -24,7 +24,20 @@ class Pkb extends CI_Controller
     }
     public function get_data()
     {
-        echo json_encode($this->M_reproduksi->get_json_pkb()->result());
+        $data = $this->db->get_where('set_pkb')->row();
+        echo json_encode($this->M_reproduksi->get_all_pkb($data->jumlah_hari)->result());
+    }
+    public function aturpkb()
+    {
+        $post = $this->input->post(null, true);
+        $this->db->where('id', 1);
+        $this->db->update('set_pkb', ['jumlah_hari' => htmlspecialchars($post['tglhari'])]);
+        redirect('/Pkb');
+    }
+    public function get_json()
+    {
+        header('Content-Type: application/json');
+        echo $this->M_reproduksi->get_json_pkb();
     }
     public function hapus()
     {
@@ -35,14 +48,10 @@ class Pkb extends CI_Controller
     }
     public function tambah()
     {
-        $data['judul'] = 'Data PKB';
-        $data['id_user'] = $this->utilitas->user_login();
-        $this->load->view('template/header');
-        $this->load->view('template/navbar', $data);
-        $this->load->view('template/sidebar');
-        $this->load->view('admin/reproduksi/v_tambah_pkb', $data);
-        $this->load->view('template/footer');
-        $this->load->view('admin/reproduksi/dta_pkb');
+        $post = $this->input->post(null, true);
+        $this->M_reproduksi->insert_pkb($post);
+        $this->M_reproduksi->delete_ib($post['idib']);
+        redirect('/Pkb');
     }
     public function edit()
     {

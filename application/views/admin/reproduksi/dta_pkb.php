@@ -6,6 +6,67 @@
     $(document).ready(function() {
         $('#list-petugas').hide();
         tampil_data();
+        $.fn.dataTableExt.oApi.fnPagingInfo = function(oSettings) {
+            return {
+                "iStart": oSettings._iDisplayStart,
+                "iEnd": oSettings.fnDisplayEnd(),
+                "iLength": oSettings._iDisplayLength,
+                "iTotal": oSettings.fnRecordsTotal(),
+                "iFilteredTotal": oSettings.fnRecordsDisplay(),
+                "iPage": Math.ceil(oSettings._iDisplayStart / oSettings._iDisplayLength),
+                "iTotalPages": Math.ceil(oSettings.fnRecordsDisplay() / oSettings._iDisplayLength)
+            };
+        };
+        var tb = $("#tblperiksapkb").dataTable({
+            initComplete: function() {
+                var api = this.api();
+                $('#tblperiksapkb_filter input')
+                    .off('.DT')
+                    // melakukan proses ketika ada input otomatis
+                    .on('input.DT', function() {
+                        api.search(this.value).draw();
+                    });
+            },
+            oLanguage: {
+                sProcessing: "Sedang Mengambil Data"
+            },
+            processing: true,
+            serverSide: true,
+            searching: true,
+            orderable: false,
+            ajax: {
+                "url": "<?php echo base_url() . 'index.php/Pkb/get_json' ?>",
+                "type": "POST"
+            },
+            columns: [{
+                    "data": "idpkb",
+                    "orderable": false
+                },
+                {
+                    "data": "tanggal"
+                },
+                {
+                    "data": "tagsapi"
+                },
+                {
+                    "data": "hasil"
+                },
+                {
+                    "data": "nama"
+                }
+            ],
+            order: [
+                [1, 'asc']
+            ],
+            rowCallback: function(row, data, iDisplayIndex) {
+                var info = this.fnPagingInfo();
+                var page = info.iPage;
+                var length = info.iLength;
+                var index = page * length + (iDisplayIndex + 1);
+                $('td:eq(0)', row).html(index);
+            }
+
+        });
 
         function tampil_data() {
             $.ajax({
@@ -24,7 +85,7 @@
                             '<td>' + e[i].namasapi + '</td>' +
                             '<td>' + e[i].ibke + '</td>' +
                             '<td>' + status + '</td>' +
-                            '<td><button class="btn-periksa btn btn-success btn-sm" data-idib="' + e[i].idib + '" data-idsapi="' + e[i].idsapi + '" data-namasapi="' + e[i].namasapi + '" data-tglib="' + e[i].tanggal + '"><i class="fas fa-eye"></i> Periksa</button></td>' +
+                            '<td><button class="btn-periksa btn btn-success btn-sm" data-idib="' + e[i].idib + '" data-idsapi="' + e[i].kdsapi + '" data-namasapi="' + e[i].namasapi + '" data-tglib="' + e[i].tanggal + '" data-tglakhir="' + e[i].tglakhir + '"><i class="fas fa-eye"></i> Periksa</button></td>' +
                             '</tr>';
                     }
                     $('#tbl-pkb-body').html(html);
@@ -37,16 +98,18 @@
             var idsapi = $(this).data('idsapi');
             var namasapi = $(this).data('namasapi');
             var tglib = $(this).data('tglib');
+            var tglakhir = $(this).data('tglakhir');
             $('#PeriksaData').modal('show');
             $('[name="idib"]').val(idib);
             $('[name="idsapi"]').val(idsapi);
             $('[name="namasapi"]').val(namasapi);
 
-
             var dateFormat = "DD-MM-YYYY";
             var MinDate = new Date(tglib);
+            var MaxDate = new Date(tglakhir);
 
             dateMin = moment(MinDate, dateFormat);
+            dateMax = moment(MaxDate, dateFormat);
             $('#tglform').datetimepicker({
                 icons: {
                     date: "fa fa-calendar",
@@ -64,7 +127,7 @@
         if (flashData) {
             Swal.fire({
                 title: 'Data Ternak',
-                text: flashData,
+                text: 'Berhasil',
                 type: 'success'
             });
         }

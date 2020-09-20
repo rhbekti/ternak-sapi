@@ -32,10 +32,18 @@ class M_reproduksi extends CI_Model
         // $this->db->join('petugas','petugas.idpetugas = reproduksi_pkb.idpetugas','left');
         return $this->db->get('reproduksi_pkb');
     }
+    public function get_all_pkb($post)
+    {
+        $sql = $this->db->query('SELECT DATE_ADD(tanggal, INTERVAL "' . $post . '" DAY) as tanggal,DATE_ADD(tanggal,INTERVAL 10 DAY) as tglakhir,idib,reproduksi_ib.idsapi as kdsapi,status_ternak,ibke,sapi.namasapi,sapi.tagsapi FROM reproduksi_ib JOIN sapi ON reproduksi_ib.idsapi = sapi.idsapi WHERE DATE_ADD(tanggal,INTERVAL "' . $post . '" DAY) <= DATE(NOW())');
+        return $sql;
+    }
     public function get_json_pkb()
     {
-        $sql = $this->db->query('SELECT DATE_ADD(tanggal, INTERVAL 60 DAY) as tanggal,idib,reproduksi_ib.idsapi as kdsapi,status_ternak,ibke,sapi.namasapi,sapi.tagsapi FROM reproduksi_ib JOIN sapi ON reproduksi_ib.idsapi = sapi.idsapi WHERE DATE_ADD(tanggal,INTERVAL 60 DAY) <= DATE(NOW())');
-        return $sql;
+        $this->datatables->select('idpkb,concat(substr(tanggal,9,2),"-",substr(tanggal,6,2),"-",substr(tanggal,1,4)) as tanggal,hasil,reproduksi_pkb.status,sapi.tagsapi,reproduksi_pkb.idpetugas,petugas.nama');
+        $this->datatables->from('reproduksi_pkb');
+        $this->datatables->join('sapi', 'sapi.idsapi = reproduksi_pkb.idsapi');
+        $this->datatables->join('petugas', 'petugas.idpetugas = reproduksi_pkb.idpetugas');
+        return $this->datatables->generate();
     }
     public function insert_ib($idpetugas, $post)
     {
@@ -109,15 +117,21 @@ class M_reproduksi extends CI_Model
     }
     public function insert_pkb($post)
     {
+        if ($post['hasil'] == 'P') {
+            $post['status'] = 1;
+        } else {
+            $post['status'] = 0;
+        }
         $data = [
             'idpkb' => '',
-            'idsapi' => htmlspecialchars($this->input->post('idsapi')),
-            'tanggal' => date('Y-m-d', strtotime($this->input->post('tanggal'))),
-            'idpetugas' => htmlspecialchars($this->input->post('idpetugas')),
-            'hasil' => $this->input->post('hasil'),
-            'tglinput' => date('Y-m-d'),
-            'idib' => $this->input->post('idib'),
-            'keterangan' => htmlspecialchars($this->input->post('keterangan'))
+            'idsapi' => htmlspecialchars($post['idsapi']),
+            'tanggal' => date('Y-m-d H:i:s', strtotime($post['tanggal'])),
+            'idpetugas' => htmlspecialchars($post['idpetugas']),
+            'hasil' => $post['hasil'],
+            'tglinput' => $post['tglinput'],
+            'idib' => $post['idib'],
+            'status' => $post['status'],
+            'keterangan' => htmlspecialchars($post['keterangan'])
         ];
         $sql = $this->db->insert('reproduksi_pkb', $data);
         if ($this->db->affected_rows($sql) > 0) {

@@ -1,4 +1,4 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed');
+<?php defined('BASEPATH') or exit('No direct script access allowed');
 
 class Pengeringan extends CI_Controller
 {
@@ -6,8 +6,8 @@ class Pengeringan extends CI_Controller
     {
         parent::__construct();
         $this->load->model(['M_pengeringan']);
-        $this->session->set_userdata('menu','reproduksi');
-        $this->session->set_userdata('submenu','pengeringan');
+        $this->session->set_userdata('menu', 'ref_reproduksi');
+        $this->session->set_userdata('submenu', 'data_pengeringan');
         belum_login();
     }
     public function index()
@@ -23,13 +23,6 @@ class Pengeringan extends CI_Controller
     }
     public function get_data()
     {
-        header('Content-Type:application/json');
-        echo $this->M_pengeringan->get_json();
-    }
-    public function tes()
-    {
-        $tgl = strtotime(date('Y-m-d'));
-        $hasil = strtotime('+2 day',$tgl);
-        echo date('Y-m-d',$hasil);
+        echo json_encode($this->M_pengeringan->get_all());
     }
 }
