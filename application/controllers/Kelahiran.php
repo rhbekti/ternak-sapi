@@ -4,8 +4,8 @@ class Kelahiran extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model(['M_kelahiran', 'M_ternak']);
-        $this->session->set_userdata('menu', 'ref_reproduksi');
+        $this->load->model(['M_kelahiran', 'M_ternak', 'M_reproduksi']);
+        $this->session->set_userdata('menu', 'ref_kelahiran');
         $this->session->set_userdata('submenu', 'data_kelahiran');
         belum_login();
     }
@@ -19,6 +19,11 @@ class Kelahiran extends CI_Controller
         $this->load->view('admin/kelahiran/v_kelahiran', $data);
         $this->load->view('template/footer');
         $this->load->view('admin/kelahiran/dta_kelahiran');
+    }
+    public function get_kelahiran()
+    {
+        $data = $this->M_reproduksi->get_data_lahir()->result();
+        echo json_encode($data);
     }
     public function get_data()
     {
@@ -43,12 +48,14 @@ class Kelahiran extends CI_Controller
             'keterangan' => $this->input->post('keterangan'),
             'idpetugas' => $this->input->post('idpetugas'),
             'tglinput' => $this->input->post('tglinput'),
-            'tagsapi' => $sapi->tagsapi,
+            'tagsapi' => $this->input->post('namasapi'),
             'statuslahir' => $this->input->post('statuslahir'),
-            'idfarm' => $sapi->idfarm,
+            'idfarm' => $this->input->post('idfarm'),
             'idib' => $this->input->post('idib')
         ];
+
         $this->M_kelahiran->insert_data($data);
+        $this->M_kelahiran->update_status($this->input->post('idpkb'));
         redirect('/Kelahiran');
     }
     public function edit()

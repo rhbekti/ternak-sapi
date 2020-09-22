@@ -39,11 +39,22 @@ class M_reproduksi extends CI_Model
     }
     public function get_json_pkb()
     {
-        $this->datatables->select('idpkb,concat(substr(tanggal,9,2),"-",substr(tanggal,6,2),"-",substr(tanggal,1,4)) as tanggal,hasil,reproduksi_pkb.status,sapi.tagsapi,reproduksi_pkb.idpetugas,petugas.nama');
+        $this->datatables->select('idpkb,reproduksi_pkb.idsapi,concat(substr(tanggal,9,2),"-",substr(tanggal,6,2),"-",substr(tanggal,1,4)) as tanggal,hasil,reproduksi_pkb.status,sapi.tagsapi,reproduksi_pkb.idpetugas,petugas.nama,sapi.idfarm,peternakan.namapeternakan,reproduksi_pkb.idib');
         $this->datatables->from('reproduksi_pkb');
         $this->datatables->join('sapi', 'sapi.idsapi = reproduksi_pkb.idsapi');
-        $this->datatables->join('petugas', 'petugas.idpetugas = reproduksi_pkb.idpetugas');
+        $this->datatables->join('petugas', 'petugas.idpetugas = reproduksi_pkb.idpetugas', 'left');
+        $this->datatables->join('peternakan', 'sapi.idfarm = peternakan.id_peternakan');
         return $this->datatables->generate();
+    }
+    public function get_data_lahir()
+    {
+        $this->db->select('idpkb,reproduksi_pkb.idsapi,concat(substr(tanggal,9,2),"-",substr(tanggal,6,2),"-",substr(tanggal,1,4)) as tanggal,hasil,reproduksi_pkb.status as stsapi,sapi.tagsapi,reproduksi_pkb.idpetugas,petugas.nama,sapi.idfarm,peternakan.namapeternakan,reproduksi_pkb.idib');
+        $this->db->from('reproduksi_pkb');
+        $this->db->join('sapi', 'sapi.idsapi = reproduksi_pkb.idsapi');
+        $this->db->join('petugas', 'petugas.idpetugas = reproduksi_pkb.idpetugas', 'left');
+        $this->db->join('peternakan', 'sapi.idfarm = peternakan.id_peternakan');
+        $this->db->where('reproduksi_pkb.status', 2);
+        return $this->db->get();
     }
     public function insert_ib($idpetugas, $post)
     {

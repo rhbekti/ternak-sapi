@@ -82,6 +82,8 @@
                           </select>
                           <input type="hidden" name="tglinput" value="<?= date('Y-m-d'); ?>">
                           <input type="hidden" name="idib" id="idib">
+                          <input type="hidden" name="idfarm" id="idfarm">
+                          <input type="hidden" name="idpkb" id="idpkb">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -160,10 +162,9 @@
           <thead>
             <tr>
               <th>No</th>
-              <th>Nama Sapi</th>
-              <th>Kelamin</th>
+              <th>Tag Sapi</th>
               <th>Peternakan</th>
-              <th>IBke</th>
+              <th>IB</th>
               <th>&nbsp;</th>
             </tr>
           </thead>

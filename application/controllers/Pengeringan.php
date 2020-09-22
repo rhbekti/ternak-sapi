@@ -25,4 +25,37 @@ class Pengeringan extends CI_Controller
     {
         echo json_encode($this->M_pengeringan->get_all());
     }
+    public function get_pengeringan()
+    {
+        header('Content-Type:application/json');
+        echo $this->M_pengeringan->get_json();
+    }
+    public function add()
+    {
+        $post = $this->input->post(null, true);
+        if ($post['status'] >= 2) {
+            $this->session->set_flashdata('info', 'Maaf Ternak Sedang Masa Pengeringan');
+            redirect('/Pengeringan');
+        }
+        $set = $this->db->get_where('set_pengeringan', ['id' => 1])->row();
+
+        $tgl_mulai = strtotime('-' . $set->awal_pengeringan . ' day', strtotime($post['tanggal']));
+        $tgl_akhir = strtotime('+' . $set->akhir_pengeringan . ' day', strtotime($post['tanggal']));
+
+        $data = [
+            'idsapi' => $post['idsapi'],
+            'tglmulai' => date('Y-m-d', $tgl_mulai),
+            'tglakhir' => date('Y-m-d', $tgl_akhir),
+            'idib' => $post['idib']
+        ];
+        $this->M_pengeringan->insert_pengeringan($data, $post['idpkb']);
+        $this->M_pengeringan->update_status($post);
+        redirect('/Pengeringan');
+    }
+    public function aturpengeringan()
+    {
+        $post = $this->input->post(null, True);
+        $this->M_pengeringan->set_pengeringan($post);
+        redirect('/Pengeringan');
+    }
 }

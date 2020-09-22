@@ -142,15 +142,26 @@ $submenu = $this->session->userdata('submenu');
               </a>
             </li>
             <li class="nav-item">
-              <a href="<?= site_url('/Kelahiran'); ?>" class="nav-link <?= ($submenu == 'data_kelahiran') ? ('active') : (''); ?>">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Data Kelahiran</p>
-              </a>
-            </li>
-            <li class="nav-item">
               <a href="<?= site_url('/Semen'); ?>" class="nav-link <?= ($submenu == 'data_semen') ? ('active') : ('') ?>">
                 <i class="fas fa-vial nav-icon"></i>
                 <p>SEMEN</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item has-treeview <?= ($menu == 'ref_kelahiran') ? ('menu-open') : (''); ?>">
+          <a href="javascript:void(0);" class="nav-link <?= ($menu == 'ref_kelahiran') ? ('active') : (''); ?>">
+            <i class="nav-icon fas fa-dog"></i>
+            <p>
+              Kelahiran
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="<?= site_url('/Kelahiran'); ?>" class="nav-link <?= ($submenu == 'data_kelahiran') ? ('active') : (''); ?>">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Data Kelahiran</p>
               </a>
             </li>
           </ul>

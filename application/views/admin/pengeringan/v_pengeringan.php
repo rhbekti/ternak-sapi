@@ -21,6 +21,8 @@
 
     <!-- Default box -->
     <div class="card">
+      <div class="flashdata" data-flashdata="<?= $this->session->flashdata('info'); ?>"></div>
+      <div class="pesanerror" data-pesanerror="<?= $this->session->flashdata('error'); ?>"></div>
       <div class="card-header">
         <button type="button" class="btn btn-sm btn-primary float-right" data-toggle="modal" data-target="#aturpengeringan"><i class="fas fa-clock"></i> Atur</button>
         <ul class="nav nav-tabs mb-3">
@@ -28,7 +30,7 @@
             <a class="nav-link active" data-toggle="tab" href="#home">Terjadwal</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#menu1">Sedang Pengeringan</a>
+            <a class="nav-link" data-toggle="tab" href="#menu1">Detail Pengeringan</a>
           </li>
         </ul>
       </div>
@@ -41,6 +43,7 @@
                   <th>No</th>
                   <th>Tag Sapi</th>
                   <th>Nama Sapi</th>
+                  <th>Status</th>
                   <th>&nbsp;</th>
                 </tr>
               </thead>
@@ -83,8 +86,12 @@
       <div class="modal-body">
         <?= form_open('/Pengeringan/aturpengeringan') ?>
         <div class="form-group">
-          <label for="tglhari">Hari</label>
-          <input type="number" name="tglhari" placeholder="jumlah hari" id="tglhari" class="form-control">
+          <label for="tglhari">Awal Pengeringan</label>
+          <input type="number" name="tglawal" placeholder="jumlah hari" id="tglawal" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="tglhari">Awal Akhir</label>
+          <input type="number" name="tglakhir" placeholder="jumlah hari" id="tglakhir" class="form-control">
         </div>
       </div>
       <div class="modal-footer">

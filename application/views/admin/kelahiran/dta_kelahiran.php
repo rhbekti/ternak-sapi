@@ -78,7 +78,7 @@
 
         });
         $.ajax({
-            url: "<?= site_url('/Sapi/get_betina'); ?>",
+            url: "<?= site_url('/Kelahiran/get_kelahiran'); ?>",
             method: "post",
             async: false,
             success: function(data) {
@@ -89,11 +89,10 @@
                     var no = i + 1;
                     html += '<tr>' +
                         '<td>' + no + '</td>' +
-                        '<td>' + r[i].namasapi + '</td>' +
-                        '<td>' + r[i].kelamin + '</td>' +
+                        '<td>' + r[i].tagsapi + '</td>' +
                         '<td>' + r[i].namapeternakan + '</td>' +
-                        '<td>' + r[i].ibke + '</td>' +
-                        '<td><button class="btn-tambah btn btn-success" data-idsapi="' + r[i].kdsapi + '" data-namasapi="' + r[i].namasapi + '" data-idib="' + r[i].idib + '"><i class="fas fa-plus-circle"></i></button></td>' +
+                        '<td>' + r[i].idib + '</td>' +
+                        '<td><button class="btn-tambah btn btn-success" data-idsapi="' + r[i].idsapi + '" data-tagsapi="' + r[i].tagsapi + '" data-idib="' + r[i].idib + '" data-idfarm="' + r[i].idfarm + '" data-idpkb="' + r[i].idpkb + '"><i class="fas fa-plus-circle"></i></button></td>' +
                         '</tr>';
                 }
                 $('#tabel-sapi').html(html);
@@ -104,13 +103,17 @@
         // end setup datatables
         $('#tblrepib').on('click', '.btn-tambah', function() {
             var idsapi = $(this).data('idsapi');
-            var nmsapi = $(this).data('namasapi');
+            var tagsapi = $(this).data('tagsapi');
             var idib = $(this).data('idib');
+            var idfarm = $(this).data('idfarm');
+            var idpkb = $(this).data('idpkb');
             $('#Modalternak').modal('hide');
             $('#tambahData').show();
             $('[name="idsapi"]').val(idsapi);
-            $('[name="namasapi"]').val(nmsapi);
+            $('[name="namasapi"]').val(tagsapi);
             $('[name="idib"]').val(idib);
+            $('[name="idfarm"]').val(idfarm);
+            $('[name="idpkb"]').val(idpkb);
         });
         $('#tblkelahiran').on('click', '.btn-hapus', function() {
             let id = $(this).data('idkelahiran');
@@ -213,8 +216,7 @@
                 }
             });
         }
-        $('#tblkelahiran').on('click','.btn-edit',function()
-        {
+        $('#tblkelahiran').on('click', '.btn-edit', function() {
             var idkelahiran = $(this).data('idkelahiran');
             var tanggal = $(this).data('tanggal');
             var nmsapi = $(this).data('namsapi');
