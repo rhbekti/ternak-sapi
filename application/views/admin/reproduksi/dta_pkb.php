@@ -127,7 +127,7 @@
         if (flashData) {
             Swal.fire({
                 title: 'Data Ternak',
-                text: 'Berhasil',
+                text: flashData,
                 type: 'success'
             });
         }

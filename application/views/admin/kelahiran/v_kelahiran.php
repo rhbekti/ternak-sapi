@@ -65,14 +65,11 @@
                           <label for="statuslahir">Status Lahir</label>
                           <select name="statuslahir" id="statuslahir" class="form-control">
                             <option value="single">Sigle</option>
-                            <option value="double">Double</option>
+                            <option value="kembar">Kembar</option>
                             <option value="abortus">Abortus</option>
                           </select>
                         </div>
-                        <div class="form-group">
-                          <label for="keterangan">Keterangan</label>
-                          <textarea name="keterangan" id="keterangan" cols="10" rows="5" class="form-control"></textarea>
-                        </div>
+
                         <div class="form-group">
                           <label for="petugas">Nama Petugas</label>
                           <input type="hidden" name="idpetugas" id="idpetugas">
@@ -84,6 +81,10 @@
                           <input type="hidden" name="idib" id="idib">
                           <input type="hidden" name="idfarm" id="idfarm">
                           <input type="hidden" name="idpkb" id="idpkb">
+                        </div>
+                        <div class="form-group">
+                          <label for="keterangan">Keterangan</label>
+                          <textarea name="keterangan" id="keterangan" cols="10" rows="5" class="form-control"></textarea>
                         </div>
                     </div>
                     <div class="modal-footer">

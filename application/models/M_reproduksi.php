@@ -2,6 +2,13 @@
 
 class M_reproduksi extends CI_Model
 {
+    public function get_ib($id = null)
+    {
+        if ($id != null) {
+            $this->db->where('idib', $id);
+        }
+        return $this->db->get('reproduksi_pkb');
+    }
     public function get_json_ib()
     {
         $this->datatables->select('idib,concat(substr(tanggal,9,2),"-",substr(tanggal,6,2),"-",substr(tanggal,1,4)) as tanggal,reproduksi_ib.idsapi as kodesapi,ibke,keterangan,intensitas_birahi as intensitas,petugas.nama as namapetugas,sapi.namasapi,semen.namasemen');
@@ -126,10 +133,23 @@ class M_reproduksi extends CI_Model
             $this->session->set_flashdata('info', 'Data Gagal diHapus');
         }
     }
+    public function update_ib($post)
+    {
+        $data = [
+            'status_ternak' => 1
+        ];
+        $this->db->where('idib', $post);
+        $this->db->update('reproduksi_ib', $data);
+    }
     public function insert_pkb($post)
     {
         if ($post['hasil'] == 'P') {
             $post['status'] = 1;
+            $data = [
+                'is_bunting' => 1
+            ];
+            $this->db->where('idib', $post['idib']);
+            $this->db->update('reproduksi_ib', $data);
         } else {
             $post['status'] = 0;
         }

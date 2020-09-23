@@ -50,6 +50,7 @@ class Kelahiran extends CI_Controller
             'tglinput' => $this->input->post('tglinput'),
             'tagsapi' => $this->input->post('namasapi'),
             'statuslahir' => $this->input->post('statuslahir'),
+            'status_ternak' => 4,
             'idfarm' => $this->input->post('idfarm'),
             'idib' => $this->input->post('idib')
         ];

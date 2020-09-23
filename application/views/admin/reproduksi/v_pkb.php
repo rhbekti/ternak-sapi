@@ -27,7 +27,7 @@
                   <a class="nav-link active" data-toggle="tab" href="#home">Belum Diperiksa</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" data-toggle="tab" href="#menu1">Sudah Diperiksa</a>
+                  <a class="nav-link" data-toggle="tab" href="#menu1">Detail Pemeriksaan</a>
                 </li>
               </ul>
             </div>

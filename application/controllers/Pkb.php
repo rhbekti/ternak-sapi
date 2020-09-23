@@ -49,9 +49,15 @@ class Pkb extends CI_Controller
     public function tambah()
     {
         $post = $this->input->post(null, true);
-        $this->M_reproduksi->insert_pkb($post);
-        $this->M_reproduksi->delete_ib($post['idib']);
-        redirect('/Pkb');
+        $data = $this->M_reproduksi->get_ib($post['idib'])->row_array();
+        if ($this->M_reproduksi->get_ib($post['idib'])->row_array() !== null) {
+            $this->session->set_flashdata('info', 'Data Sudah di Masukkan');
+            redirect('/Pkb');
+        } else {
+            $this->M_reproduksi->insert_pkb($post);
+            $this->M_reproduksi->update_ib($post['idib']);
+            redirect('/Pkb');
+        }
     }
     public function edit()
     {
