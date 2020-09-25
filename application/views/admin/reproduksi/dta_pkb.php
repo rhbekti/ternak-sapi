@@ -122,22 +122,22 @@
             });
         });
 
-        const flashData = $('.flashdata').data('flashdata');
-        const errorData = $('.flashdata').data('pesan');
-        if (flashData) {
-            Swal.fire({
-                title: 'Data Ternak',
-                text: 'Berhasil',
-                type: 'success'
-            });
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000
+        });
+        const pesan = $('.pesanerror').data('pesanerror');
+        if (pesan) {
+            $('#tambahdata').modal('show');
         }
-        if (errorData) {
-            Swal.fire({
-                title: 'Data Ternak',
-                text: errorData,
-                type: 'error',
-                showConfirmButton: false,
-                timer: 3000
+        //  sweet alert
+        const flashData = $('.flashdata').data('flashdata');
+        if (flashData) {
+            Toast.fire({
+                type: 'success',
+                title: flashData
             });
         }
         $('#petugas').on('keyup', function() {

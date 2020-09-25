@@ -88,12 +88,22 @@
                 }
             });
         }
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000
+        });
+        const pesan = $('.pesanerror').data('pesanerror');
+        if (pesan) {
+            $('#tambahdata').modal('show');
+        }
+        //  sweet alert
         const flashData = $('.flashdata').data('flashdata');
         if (flashData) {
-            Swal.fire({
-                title: 'Data Ternak',
-                text: flashData,
-                type: 'success'
+            Toast.fire({
+                type: 'success',
+                title: flashData
             });
         }
     });

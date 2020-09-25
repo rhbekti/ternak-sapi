@@ -116,7 +116,7 @@
                 $('#tblrepib').DataTable();
             }
         });
-        $('#tblrepib').on('click','.btnHapus',function(){
+        $('#tblrepib').on('click', '.btnHapus', function() {
             var id = $(this).data('idtransfer');
             $('#ModalHapus').modal('show');
             $('[name="idtransfer"]').val(id);
@@ -151,14 +151,19 @@
             format: "DD-MM-YYYY",
             useCurrent: false
         });
-       
+
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000
+        });
+        //  sweet alert
         const flashData = $('.flashdata').data('flashdata');
-        const errorData = $('.pesanerror').data('pesanerror');
         if (flashData) {
-            Swal.fire({
-                title: 'Data Ternak',
-                text: flashData,
-                type: 'success'
+            Toast.fire({
+                type: 'success',
+                title: flashData
             });
         }
         if (errorData) {
