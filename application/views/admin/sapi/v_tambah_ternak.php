@@ -101,7 +101,7 @@ date_default_timezone_set('Asia/Jakarta');
               <div class="row">
                 <div class="col-12 col-md-6 col-sm-12">
                   <div class="form-group">
-                    <label for="tgllahir">Tanggal Melahirkan</label>
+                    <label for="tgllahir">Tanggal Kelahiran</label>
                     <div class="input-group date" id="tgllahirform" data-target-input="nearest">
                       <input type="text" name="tgllahir" class="form-control datetimepicker-input" data-target="#tgllahirform" />
                       <div class="input-group-append" data-target="#tgllahirform" data-toggle="datetimepicker">

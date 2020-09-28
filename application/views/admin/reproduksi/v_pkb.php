@@ -24,7 +24,7 @@
               <button type="button" class="btn btn-sm btn-primary float-right" data-toggle="modal" data-target="#aturpkb"><i class="fas fa-clock"></i> Atur</button>
               <ul class="nav nav-tabs mb-3">
                 <li class="nav-item">
-                  <a class="nav-link active" data-toggle="tab" href="#home">Belum Diperiksa</a>
+                  <a class="nav-link active" data-toggle="tab" href="#home">Pemeriksaan</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" data-toggle="tab" href="#menu1">Detail Pemeriksaan</a>

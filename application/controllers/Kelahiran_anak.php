@@ -31,7 +31,7 @@ class Kelahiran_anak extends CI_Controller
         $result = $this->M_kelahiran->get_kelahiran_id($post['idsapi']);
 
         if ($post['status'] == 'single') {
-            if ($result->numrows() > 0) {
+            if ($result->num_rows() > 0) {
                 $this->session->set_flashdata('info', 'Data sudah di Masukkan');
                 redirect('/Kelahiran_anak');
             } else {

@@ -55,11 +55,12 @@ class M_reproduksi extends CI_Model
     }
     public function get_data_lahir()
     {
-        $this->db->select('idpkb,reproduksi_pkb.idsapi,concat(substr(tanggal,9,2),"-",substr(tanggal,6,2),"-",substr(tanggal,1,4)) as tanggal,hasil,reproduksi_pkb.status as stsapi,sapi.tagsapi,reproduksi_pkb.idpetugas,petugas.nama,sapi.idfarm,peternakan.namapeternakan,reproduksi_pkb.idib');
+        $this->db->select('idpkb,reproduksi_pkb.idsapi,concat(substr(tanggal,9,2),"-",substr(tanggal,6,2),"-",substr(tanggal,1,4)) as tanggal,hasil,reproduksi_pkb.status as stsapi,sapi.tagsapi,reproduksi_pkb.idpetugas,petugas.nama,sapi.idfarm,peternakan.namapeternakan,reproduksi_pkb.idib,concat(substr(tglmulai,9,2),"-",substr(tglmulai,6,2),"-",substr(tglmulai,1,4)) as tglmulai,concat(substr(tglakhir,9,2),"-",substr(tglakhir,6,2),"-",substr(tglakhir,1,4)) as tglakhir');
         $this->db->from('reproduksi_pkb');
         $this->db->join('sapi', 'sapi.idsapi = reproduksi_pkb.idsapi');
         $this->db->join('petugas', 'petugas.idpetugas = reproduksi_pkb.idpetugas', 'left');
         $this->db->join('peternakan', 'sapi.idfarm = peternakan.id_peternakan');
+        $this->db->join('reproduksi_pengeringan', 'reproduksi_pengeringan.idsapi = reproduksi_pkb.idsapi', 'left');
         $this->db->where('reproduksi_pkb.status', 2);
         return $this->db->get();
     }
@@ -81,9 +82,9 @@ class M_reproduksi extends CI_Model
         ];
         $sql = $this->db->insert('reproduksi_ib', $data);
         if ($this->db->affected_rows($sql) > 0) {
-            $this->session->set_flashdata('info', 'Data Berhasil Ditambahkan');
+            $this->session->set_flashdata('info', ' Berhasil Ditambahkan');
         } else {
-            $this->session->set_flashdata('pesan', 'Data Gagal Ditambahkan');
+            $this->session->set_flashdata('pesan', ' Gagal Ditambahkan');
         }
     }
     public function insert_et()
@@ -108,9 +109,9 @@ class M_reproduksi extends CI_Model
         $this->db->where('idib', $post);
         $sql = $this->db->delete('reproduksi_ib');
         if ($this->db->affected_rows($sql) > 0) {
-            $this->session->set_flashdata('info', 'Data Berhasil diHapus');
+            $this->session->set_flashdata('info', ' Berhasil diHapus');
         } else {
-            $this->session->set_flashdata('info', 'Data Gagal diHapus');
+            $this->session->set_flashdata('info', ' Gagal diHapus');
         }
     }
     public function delete_et($post)
@@ -118,9 +119,9 @@ class M_reproduksi extends CI_Model
         $this->db->where('idtransfer', $post);
         $sql = $this->db->delete('reproduksi_et');
         if ($this->db->affected_rows($sql) > 0) {
-            $this->session->set_flashdata('info', 'Data Berhasil diHapus');
+            $this->session->set_flashdata('info', ' Berhasil diHapus');
         } else {
-            $this->session->set_flashdata('info', 'Data Gagal diHapus');
+            $this->session->set_flashdata('info', ' Gagal diHapus');
         }
     }
     public function delete_pkb($post)

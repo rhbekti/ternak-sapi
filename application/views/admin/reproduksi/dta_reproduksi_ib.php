@@ -129,24 +129,24 @@
         $('#pilihsemen').on('click', function() {
             $('#ModalSemen').modal('show');
         });
-        $('#sapibetina').on('keyup',function(){
+        $('#sapibetina').on('keyup', function() {
             var tag = $('#sapibetina').val();
-            if(tag !== ''){
+            if (tag !== '') {
                 var data = {
-                    tag : tag
+                    tag: tag
                 }
                 $.ajax({
-                    url : "<?=site_url('/Sapi/valid_tag');?>",
-                    method : 'post',
-                    async : true,
-                    data : data,
-                    success : function(respon){
-                       var r = JSON.parse(respon);
-                       if(r.length == ''){
-                           $('#validasi_tag').html('data tidak ditemukan');
-                       }else{
-                           $('#validasi_tag').html('');
-                       }
+                    url: "<?= site_url('/Sapi/valid_tag'); ?>",
+                    method: 'post',
+                    async: true,
+                    data: data,
+                    success: function(respon) {
+                        var r = JSON.parse(respon);
+                        if (r.length == '') {
+                            $('#validasi_tag').html('data tidak ditemukan');
+                        } else {
+                            $('#validasi_tag').html('');
+                        }
                     }
                 });
             }
@@ -214,21 +214,23 @@
         }
         const flashData = $('.flashdata').data('flashdata');
         const errorData = $('.flashdata').data('pesan');
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000
+        });
         if (flashData) {
-            Swal.fire({
-                title: 'Data Ternak',
-                text: flashData,
+            Toast.fire({
                 type: 'success',
-                timer: 3000
-            });
+                title: ' Berhasil ' + flashData
+            })
         }
         if (errorData) {
-            Swal.fire({
-                title: 'Data Ternak',
-                text: errorData,
-                type: 'error',
-                timer: 3000
-            });
+            Toast.fire({
+                type: 'success',
+                title: ' Gagal ' + flashData
+            })
         }
     });
 </script>

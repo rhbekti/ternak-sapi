@@ -89,12 +89,17 @@
             });
         }
         const flashData = $('.flashdata').data('flashdata');
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000
+        });
         if (flashData) {
-            Swal.fire({
-                title: 'Data Ternak',
-                text: flashData,
-                type: 'success'
-            });
+            Toast.fire({
+                type: 'success',
+                title: ' Berhasil ' + flashData
+            })
         }
     });
 </script>

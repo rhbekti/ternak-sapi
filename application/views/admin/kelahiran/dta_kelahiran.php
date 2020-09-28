@@ -92,7 +92,7 @@
                         '<td>' + r[i].tagsapi + '</td>' +
                         '<td>' + r[i].namapeternakan + '</td>' +
                         '<td>' + r[i].idib + '</td>' +
-                        '<td><button class="btn-tambah btn btn-success" data-idsapi="' + r[i].idsapi + '" data-tagsapi="' + r[i].tagsapi + '" data-idib="' + r[i].idib + '" data-idfarm="' + r[i].idfarm + '" data-idpkb="' + r[i].idpkb + '"><i class="fas fa-plus-circle"></i></button></td>' +
+                        '<td><button class="btn-tambah btn btn-success btn-sm" data-idsapi="' + r[i].idsapi + '" data-tagsapi="' + r[i].tagsapi + '" data-idib="' + r[i].idib + '" data-idfarm="' + r[i].idfarm + '" data-idpkb="' + r[i].idpkb + '" data-tglmulai="' + r[i].tglmulai + '" data-tglakhir="' + r[i].tglakhir + '"><i class="fas fa-plus-circle"></i></button></td>' +
                         '</tr>';
                 }
                 $('#tabel-sapi').html(html);
@@ -107,6 +107,8 @@
             var idib = $(this).data('idib');
             var idfarm = $(this).data('idfarm');
             var idpkb = $(this).data('idpkb');
+            var tglawal = $(this).data('tglmulai');
+            var tglakhir = $(this).data('tglakhir');
             $('#Modalternak').modal('hide');
             $('#tambahData').show();
             $('[name="idsapi"]').val(idsapi);
@@ -114,21 +116,25 @@
             $('[name="idib"]').val(idib);
             $('[name="idfarm"]').val(idfarm);
             $('[name="idpkb"]').val(idpkb);
+
+            // mengatur range tanggal
+            var dateFormat = "DD-MM-YYYY";
+            var MinDate = tglawal;
+            var MaxDate = tglakhir;
+
+            dateMin = moment(MinDate, dateFormat);
+            dateMax = moment(MaxDate, dateFormat);
+
+            $("#datetimepicker1").datetimepicker({
+                format: dateFormat,
+                minDate: dateMin,
+                maxDate: dateMax,
+            });
         });
         $('#tblkelahiran').on('click', '.btn-hapus', function() {
             let id = $(this).data('idkelahiran');
             $('#Modalhapus').modal('show');
             $('[name="idkelahiran"]').val(id);
-        });
-        $('#tglform').datetimepicker({
-            icons: {
-                time: "fa fa-clock-o",
-                date: "fa fa-calendar",
-                up: "fa fa-arrow-up",
-                down: "fa fa-arrow-down"
-            },
-            format: "DD-MM-YYYY",
-            useCurrent: false
         });
         $('#petugas').on('keyup', function() {
             if ($('#petugas').val() !== '') {
@@ -185,36 +191,17 @@
         });
         //  sweet alert
         const flashData = $('.flashdata').data('flashdata');
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000
+        });
         if (flashData) {
-            Swal.fire({
-                title: 'Data Kelahiran',
-                text: flashData,
-                type: 'success'
-            });
-        }
-
-        function submit_data() {
-            var data = {
-                tanggal: $('[name="tanggal"]').val(),
-                idsapi: $('[name="idsapi"]').val(),
-                xlaktasi: $('[name="xlaktasi"]').val(),
-                petugas: $('[name="idpetugas"]').val()
-            };
-            $.ajax({
-                url: "<?= site_url('/Kelahiran/tambah_data') ?>",
-                method: 'post',
-                data: data,
-                async: true,
-                dataType: 'json',
-                cache: false,
-                success: function(respon) {
-                    if (respon.success == true) {
-                        load_data();
-                    } else {
-                        alert('error');
-                    }
-                }
-            });
+            Toast.fire({
+                type: 'success',
+                title: ' Berhasil ' + flashData
+            })
         }
         $('#tblkelahiran').on('click', '.btn-edit', function() {
             var idkelahiran = $(this).data('idkelahiran');

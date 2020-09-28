@@ -40,21 +40,22 @@
                     <div class="modal-body">
                       <form action="<?= site_url('/Kelahiran/tambah'); ?>" method="post">
                         <div class="form-group">
-                          <label for="tgl">Tanggal</label>
-                          <div class="input-group date" id="tglform" data-target-input="nearest">
-                            <div class="input-group-append" data-target="#tglform" data-toggle="datetimepicker">
-                              <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                            </div>
-                            <input type="text" name="tanggal" class="form-control datetimepicker-input" data-target="#tglform" />
-                          </div>
-                        </div>
-                        <div class="form-group">
+                          <label for="pilihternak">Pilih Ternak</label>
                           <div class="input-group mb-3">
                             <div class="input-group-prepend">
                               <button class="btn btn-success" type="button" id="pilihternak">Pilih</button>
                             </div>
                             <input type="hidden" name="idsapi">
                             <input type="text" class="form-control" name="namasapi" placeholder="Pilih Sapi" readonly>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="tanggal">Tanggal</label>
+                          <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+                            <input type="text" name="tanggal" class="form-control datetimepicker-input" data-target="#datetimepicker1" />
+                            <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+                              <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                            </div>
                           </div>
                         </div>
                         <div class="form-group">

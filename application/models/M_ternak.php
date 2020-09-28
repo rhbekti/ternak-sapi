@@ -122,7 +122,9 @@ class M_ternak extends CI_Model
     }
     public function validasi_tag($post)
     {
+        $this->db->select('sapi.*,concat(substr(tglakhir,9,2),"-",substr(tglakhir,6,2),"-",substr(tglakhir,1,4)) as tglakhir');
         $this->db->like('tagsapi', $post, 'both');
+        $this->db->join('reproduksi_pengeringan', 'reproduksi_pengeringan.idsapi = sapi.idsapi');
         return $this->db->get_where('sapi', ['kelamin' => 'Betina']);
     }
 }
