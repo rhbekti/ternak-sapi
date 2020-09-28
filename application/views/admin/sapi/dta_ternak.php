@@ -67,6 +67,7 @@
                 },
                 {
                     "data": "hapus"
+<<<<<<< HEAD
                 }
             ],
             order: [
@@ -117,6 +118,8 @@
                 },
                 {
                     "data": "namapeternakan"
+=======
+>>>>>>> b2581427159ddf2fd76e4848105359c214c04a42
                 }
             ],
             order: [
@@ -130,6 +133,59 @@
                 $('td:eq(0)', row).html(index);
             }
         });
+<<<<<<< HEAD
+=======
+        var kd = $("#tblkandang").dataTable({
+            dom: '<"top"if>rt<"bottom"p>',
+            initComplete: function() {
+                var api = this.api();
+                $('#tblkandang_filter input')
+                    .off('.DT')
+                    // melakukan proses ketika ada input otomatis
+                    .on('input.DT', function() {
+                        api.search(this.value).draw();
+                    });
+            },
+            oLanguage: {
+                sProcessing: "Sedang Mengambil Data"
+            },
+            processing: true,
+            serverSide: true,
+            searching: true,
+            orderable: false,
+            ajax: {
+                "url": "<?php echo base_url() . 'index.php/kandang/get_data' ?>",
+                "type": "POST"
+            },
+            columns: [{
+                    "data": "idkandang",
+                    "orderable": false
+                },
+                {
+                    "data": "pilih"
+                },
+                {
+                    "data": "namakandang"
+                },
+                {
+                    "data": "lokasikandang"
+                },
+                {
+                    "data": "namapeternakan"
+                }
+            ],
+            order: [
+                [0, 'asc']
+            ],
+            rowCallback: function(row, data, iDisplayIndex) {
+                var info = this.fnPagingInfo();
+                var page = info.iPage;
+                var length = info.iLength;
+                var index = page * length + (iDisplayIndex + 1);
+                $('td:eq(0)', row).html(index);
+            }
+        });
+>>>>>>> b2581427159ddf2fd76e4848105359c214c04a42
         // tombol pilih
         $('#tblkandang').on('click', '#pilihkandang', function() {
             var idkandang = $(this).data('idkandang');
@@ -186,18 +242,32 @@
             $('[name="waktulahirsapi"]').val(waktu);
         });
         //  sweet alert
+<<<<<<< HEAD
         const flashData = $('.flashdata').data('flashdata');
+=======
+>>>>>>> b2581427159ddf2fd76e4848105359c214c04a42
         const Toast = Swal.mixin({
             toast: true,
             position: 'top-end',
             showConfirmButton: false,
             timer: 3000
         });
+<<<<<<< HEAD
         if (flashData) {
             Toast.fire({
                 type: 'success',
                 title: ' Berhasil ' + flashData
             })
+=======
+
+        //  sweet alert
+        const flashData = $('.flashdata').data('flashdata');
+        if (flashData) {
+            Toast.fire({
+                type: 'success',
+                title: flashData
+            });
+>>>>>>> b2581427159ddf2fd76e4848105359c214c04a42
         }
     });
 </script>

@@ -190,6 +190,17 @@
             });
         });
         //  sweet alert
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000
+        });
+        const pesan = $('.pesanerror').data('pesanerror');
+        if (pesan) {
+            $('#tambahdata').modal('show');
+        }
+        //  sweet alert
         const flashData = $('.flashdata').data('flashdata');
         const Toast = Swal.mixin({
             toast: true,
@@ -200,8 +211,37 @@
         if (flashData) {
             Toast.fire({
                 type: 'success',
+<<<<<<< HEAD
                 title: ' Berhasil ' + flashData
             })
+=======
+                title: flashData
+            });
+        }
+
+        function submit_data() {
+            var data = {
+                tanggal: $('[name="tanggal"]').val(),
+                idsapi: $('[name="idsapi"]').val(),
+                xlaktasi: $('[name="xlaktasi"]').val(),
+                petugas: $('[name="idpetugas"]').val()
+            };
+            $.ajax({
+                url: "<?= site_url('/Kelahiran/tambah_data') ?>",
+                method: 'post',
+                data: data,
+                async: true,
+                dataType: 'json',
+                cache: false,
+                success: function(respon) {
+                    if (respon.success == true) {
+                        load_data();
+                    } else {
+                        alert('error');
+                    }
+                }
+            });
+>>>>>>> b2581427159ddf2fd76e4848105359c214c04a42
         }
         $('#tblkelahiran').on('click', '.btn-edit', function() {
             var idkelahiran = $(this).data('idkelahiran');

@@ -212,7 +212,15 @@
         if (pesan) {
             $('#ModalTambah').modal('show');
         }
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000
+        });
+        //  sweet alert
         const flashData = $('.flashdata').data('flashdata');
+<<<<<<< HEAD
         const errorData = $('.flashdata').data('pesan');
         const Toast = Swal.mixin({
             toast: true,
@@ -231,6 +239,13 @@
                 type: 'success',
                 title: ' Gagal ' + flashData
             })
+=======
+        if (flashData) {
+            Toast.fire({
+                type: 'success',
+                title: flashData
+            });
+>>>>>>> b2581427159ddf2fd76e4848105359c214c04a42
         }
     });
 </script>

@@ -88,6 +88,17 @@
                 }
             });
         }
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000
+        });
+        const pesan = $('.pesanerror').data('pesanerror');
+        if (pesan) {
+            $('#tambahdata').modal('show');
+        }
+        //  sweet alert
         const flashData = $('.flashdata').data('flashdata');
         const Toast = Swal.mixin({
             toast: true,
@@ -98,8 +109,13 @@
         if (flashData) {
             Toast.fire({
                 type: 'success',
+<<<<<<< HEAD
                 title: ' Berhasil ' + flashData
             })
+=======
+                title: flashData
+            });
+>>>>>>> b2581427159ddf2fd76e4848105359c214c04a42
         }
     });
 </script>

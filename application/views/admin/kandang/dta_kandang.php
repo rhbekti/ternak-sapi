@@ -148,6 +148,7 @@
             $('#Modalhapus').modal('show');
             $('[name="idkandang"]').val(id);
         });
+<<<<<<< HEAD
 
         const pesan = $('.pesanerror').data('pesanerror');
         if (pesan) {
@@ -155,17 +156,29 @@
         }
         //  sweet alert
         const flashData = $('.flashdata').data('flashdata');
+=======
+>>>>>>> b2581427159ddf2fd76e4848105359c214c04a42
         const Toast = Swal.mixin({
             toast: true,
             position: 'top-end',
             showConfirmButton: false,
             timer: 3000
         });
+<<<<<<< HEAD
         if (flashData) {
             Toast.fire({
                 type: 'success',
                 title: ' Berhasil ' + flashData
             })
+=======
+        //  sweet alert
+        const flashData = $('.flashdata').data('flashdata');
+        if (flashData) {
+            Toast.fire({
+                type: 'success',
+                title: flashData
+            });
+>>>>>>> b2581427159ddf2fd76e4848105359c214c04a42
         }
     });
 </script>

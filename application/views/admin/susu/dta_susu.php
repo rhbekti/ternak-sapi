@@ -44,7 +44,11 @@
                     "data": "tanggal"
                 },
                 {
+<<<<<<< HEAD
                     "data": "tagsapi"
+=======
+                    "data": "namasapi"
+>>>>>>> b2581427159ddf2fd76e4848105359c214c04a42
                 },
                 {
                     "data": "namakandang"
@@ -63,7 +67,61 @@
                 }
             ],
             order: [
+<<<<<<< HEAD
                 [0, 'desc']
+=======
+                [0, 'asc']
+            ],
+            rowCallback: function(row, data, iDisplayIndex) {
+                var info = this.fnPagingInfo();
+                var page = info.iPage;
+                var length = info.iLength;
+                var index = page * length + (iDisplayIndex + 1);
+                $('td:eq(0)', row).html(index);
+            }
+        });
+        var rh = $("#tblsapi").dataTable({
+            dom: '<"top"if>rt<"bottom"p>',
+            initComplete: function() {
+                var api = this.api();
+                $('#tblsapi_filter input')
+                    .off('.DT')
+                    // melakukan proses ketika ada input otomatis
+                    .on('input.DT', function() {
+                        api.search(this.value).draw();
+                    });
+            },
+            oLanguage: {
+                sProcessing: "Sedang Mengambil Data"
+            },
+            processing: true,
+            serverSide: true,
+            searching: true,
+            orderable: false,
+            ajax: {
+                "url": "<?php echo base_url() . 'index.php/Sapi/get_data' ?>",
+                "type": "POST"
+            },
+            columns: [{
+                    "data": "idsapi",
+                    "orderable": false
+                },
+                {
+                    "data": "namasapi"
+                },
+                {
+                    "data": "namapeternakan"
+                },
+                {
+                    "data": "namakandang"
+                },
+                {
+                    "data": "tambah"
+                }
+            ],
+            order: [
+                [0, 'asc']
+>>>>>>> b2581427159ddf2fd76e4848105359c214c04a42
             ],
             rowCallback: function(row, data, iDisplayIndex) {
                 var info = this.fnPagingInfo();
@@ -79,12 +137,17 @@
             $('#Modalhapus').modal('show');
             $('[name="idpengukuran"]').val(id);
         });
+<<<<<<< HEAD
         // tombol hapus
+=======
+        // tombol edit
+>>>>>>> b2581427159ddf2fd76e4848105359c214c04a42
         $('#tblsusu').on('click', '#btnedit', function() {
             var id = $(this).data('idpengukuran');
             $('#Modalhapus').modal('show');
             $('[name="idpengukuran"]').val(id);
         });
+<<<<<<< HEAD
         // tombol edit
         $('#tblsusu').on('click', '.btn-edit', function() {
             var idpengukuran = $(this).data('idpengukuran');
@@ -161,18 +224,49 @@
 
         //  sweet alert
         const flashData = $('.flashdata').data('flashdata');
+=======
+        // tombol pilih
+        $('#tblsapi').on('click', '#pilihternak', function() {
+            var idsapi = $(this).data('idsapi');
+            var nmsapi = $(this).data('nmsapi');
+            var idkandang = $(this).data('idkandang');
+            var nmkandang = $(this).data('nmkandang');
+            var idpeternakan = $(this).data('idpeternakan');
+            var nmpeternakan = $(this).data('namapeternakan');
+            $('#view_ternak').modal('hide');
+            $('[name="idsapi"]').val(idsapi);
+            $('[name="nmsapi"]').val(nmsapi);
+            $('[name="idkandang"]').val(idkandang);
+            $('[name="nmkandang"]').val(nmkandang);
+            $('[name="idpeternakan"]').val(idpeternakan);
+            $('[name="namapeternakan"]').val(nmpeternakan);
+        });
+        //  sweet alert
+>>>>>>> b2581427159ddf2fd76e4848105359c214c04a42
         const Toast = Swal.mixin({
             toast: true,
             position: 'top-end',
             showConfirmButton: false,
             timer: 3000
         });
+<<<<<<< HEAD
+=======
+
+        //  sweet alert
+        const flashData = $('.flashdata').data('flashdata');
+>>>>>>> b2581427159ddf2fd76e4848105359c214c04a42
         if (flashData) {
             Toast.fire({
                 type: 'success',
                 title: flashData
+<<<<<<< HEAD
             })
         }
+=======
+            });
+        }
+
+>>>>>>> b2581427159ddf2fd76e4848105359c214c04a42
     });
 </script>
 </body>
